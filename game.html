@@ -1,0 +1,147 @@
+<!-- file://localhost/Users/jonathan/gdrive/CODE/towers_of_js/game.html -->
+
+<html>
+  <head>
+    <title>jLander</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+
+  <script type="application/javascript">
+    // var thing = new Image();
+
+    var dead = false;
+    var gameLoopCounter = 0;
+    var frameRate = 30; // frames per second
+    var cycleTime = (1000 / frameRate);
+    var canvasEdgeX = 800; // sync this with HTML below
+    var canvasEdgeY = 600; // sync this with HTML below
+
+    $( document ).ready(function() {
+      // init stuff
+      // thing.src = 'thing.svg';
+
+      // key listeners 
+      $( document ).keydown(function(event) {
+        event.preventDefault();
+
+        // if ( event.which == 51) { // means 3!
+        //   
+        // };
+
+      });
+
+      $( document ).keyup(function(event) {
+        event.preventDefault();
+
+        if ( event.which == 190 || event.which == 188) { // > or <
+          changePitch = 0;
+        };
+      });
+    });
+
+
+    function loop(){
+      setInterval(function(){
+        if (dead == false) {
+          gameLoopCounter += 1; 
+          // recurring checks here 
+
+          // aim creeps 
+          // walk creeps 
+          // aim towers 
+          // fire towers 
+          // move bullets 
+          // check for hits 
+
+          draw();
+          // updateStats();
+
+        };
+      },cycleTime);
+    };
+
+
+    function draw(){
+      
+      var canvas = document.getElementById("canvas");
+      if (canvas.getContext) {
+        var ctx = canvas.getContext("2d");
+        ctx.clearRect (0, 0, canvasEdgeX, canvasEdgeY)
+        ctx.fillStyle = "rgba(0, 255, 0, 1)";
+        drawPosX = to_i(posX);
+        drawPosY = to_i(posY);
+
+      }
+      else {
+        window.alert("You're too good looking to use a browser this old.");
+      }  
+    }
+
+    function updateStats(){
+      //
+    };
+
+    function drawData(ctx){
+      //charts and graphs and whatnot
+    };
+
+    function to_i(_value)  {
+      // uses Bitwise operator to convert value to int. Allegedly faster than Math methods.
+      return _value | 0
+    };
+
+    function to_rad(_degrees){
+      return _degrees * (Math.PI / 180)
+    };
+
+  </script>
+
+
+  <script>
+    // tests! 
+
+    // pitch 0 = straight up; clockwise 90, 180, 270; modulo 360
+
+    console.log("tests working = " + (1 == 1));
+    console.log("Math.sin(0) = " + (Math.sin(0) == 0));
+    console.log("updateThrustX(0,1) = " + (updateThrustX(0, 1) == 0));
+    console.log("Math.sin(to_rad(90)) = 1 " + (Math.sin(to_rad(90)) == 1));
+    console.log("Math.sin(to_rad(270)) = -1 " + (Math.sin(to_rad(270)) == -1));  
+    console.log("Degrees to radians = " + (to_rad(180) == Math.PI));
+    console.log("thrustOff() = " + (thrustOff() == 0) );
+
+  </script>
+
+
+
+    <style type="text/css">
+      canvas { 
+        border: 1px solid green; 
+        background-color: #000;
+        background-image: url('nebula.jpg');
+        background-size: 1586px 784px;
+        z-index: 0;
+      }
+      #stats {
+        margin: 50px;
+        position: absolute;
+        z-index: 100;
+        color: #00FF00;
+        font-size: 20px;
+        font-family: helvetica, arial, sans-serif;
+      }
+    </style>
+ 
+  </head>
+ 
+  <body onload="loop();">
+<!--     <div id="stats">
+      <div class="stats fuel">Fuel: 000000</div>
+      <div class="stats altitude">Altitude: 000000</div>
+      <div class="stats decent">Decent rate: 000000</div>
+    </div>  --> 
+    <canvas id="canvas" width="1586" height="784"></canvas>
+    Use 1, 2 to thrust. Use < > to rotate. 
+  </body>
+
+</html>
