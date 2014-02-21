@@ -8,13 +8,14 @@
 
   <script type="application/javascript">
     // var thing = new Image();
+    creep = new Image();
 
     var dead = false;
     var gameLoopCounter = 0;
     var frameRate = 30; // frames per second
     var cycleTime = (1000 / frameRate);
-    var canvasEdgeX = 800; // sync this with HTML below
-    var canvasEdgeY = 600; // sync this with HTML below
+    var canvasEdgeX = 1000; // sync this with HTML below
+    var canvasEdgeY = 800; // sync this with HTML below
 
     $( document ).ready(function() {
       // init stuff
@@ -68,8 +69,11 @@
         var ctx = canvas.getContext("2d");
         ctx.clearRect (0, 0, canvasEdgeX, canvasEdgeY)
         ctx.fillStyle = "rgba(0, 255, 0, 1)";
-        drawPosX = to_i(posX);
-        drawPosY = to_i(posY);
+        
+        // drawPosX = to_i(posX);
+        // drawPosY = to_i(posY);
+
+        console.log("loop running")
 
       }
       else {
@@ -104,7 +108,6 @@
 
     console.log("tests working = " + (1 == 1));
     console.log("Math.sin(0) = " + (Math.sin(0) == 0));
-    console.log("updateThrustX(0,1) = " + (updateThrustX(0, 1) == 0));
     console.log("Math.sin(to_rad(90)) = 1 " + (Math.sin(to_rad(90)) == 1));
     console.log("Math.sin(to_rad(270)) = -1 " + (Math.sin(to_rad(270)) == -1));  
     console.log("Degrees to radians = " + (to_rad(180) == Math.PI));
@@ -140,7 +143,7 @@
       <div class="stats altitude">Altitude: 000000</div>
       <div class="stats decent">Decent rate: 000000</div>
     </div>  --> 
-    <canvas id="canvas" width="800" height="600"></canvas>
+    <canvas id="canvas" width="1000" height="800"></canvas>
     <!-- Helper text here --> 
   </body>
 
