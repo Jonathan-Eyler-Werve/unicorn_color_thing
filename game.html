@@ -1,4 +1,4 @@
-<!--  nm -->
+<!--  file://localhost/Users/jonathan/gdrive/CODE/towers_of_js/game.html -->
 
 <html>
   <head>
@@ -12,7 +12,7 @@
 
     var dead = false;
     var gameLoopCounter = 0;
-    var frameRate = 30; // frames per second
+    var frameRate = 2; // frames per second
     var cycleTime = (1000 / frameRate);
     var canvasEdgeX = 1000; // sync this with HTML below
     var canvasEdgeY = 800; // sync this with HTML below
@@ -45,6 +45,8 @@
       setInterval(function(){
         if (dead == false) {
           gameLoopCounter += 1; 
+
+
           // recurring checks here 
 
           // aim creeps 
@@ -55,7 +57,9 @@
           // check for hits 
 
           draw();
-          // updateStats();
+          // 
+
+
 
         };
       },cycleTime);
@@ -79,14 +83,6 @@
         window.alert("You're too good looking to use a browser this old.");
       }  
     }
-
-    function updateStats(){
-      //
-    };
-
-    function drawData(ctx){
-      //charts and graphs and whatnot
-    };
 
     function to_i(_value)  {
       // uses Bitwise operator to convert value to int. Allegedly faster than Math methods.
