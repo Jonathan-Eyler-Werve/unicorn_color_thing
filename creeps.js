@@ -1,10 +1,5 @@
 <!--  Contains functions to create, draw and modify creeps -->
 
-
-var creeps = [];
-
-// creeps << my_creep;
-
 function creep(posX,posY,direction,hitPoints){
 	this.posX=posX;
 	this.posY=posY;
@@ -21,7 +16,6 @@ function creep(posX,posY,direction,hitPoints){
 		ctx.drawImage(this.image,-25,-25);
 	  ctx.restore();
 	};
-
 };
 
 function drawCreep(ctx){
@@ -32,7 +26,9 @@ function drawCreep(ctx){
   ctx.restore();
 };
 
-
+var creeps = [];
 var my_creep = new creep(100,100,180,10);
+creeps.push(my_creep)
 
-console.log(my_creep)
+console.log(my_creep);
+console.log(creeps);
