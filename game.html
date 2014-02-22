@@ -20,7 +20,7 @@
 
     $( document ).ready(function() {
       // init stuff
-      creep.src = 'images/smiley.jpg';
+      creep.src = 'images/icon_27452.svg';
 
       // key listeners 
       $( document ).keydown(function(event) {
@@ -72,9 +72,7 @@
         ctx.clearRect (0, 0, canvasEdgeX, canvasEdgeY)
         ctx.fillStyle = "rgba(0, 255, 0, 1)";
         
-        // drawPosX = to_i(posX);
-        // drawPosY = to_i(posY);
-
+        drawCreep(ctx);
  
       }
       else {
@@ -112,7 +110,7 @@
     <style type="text/css">
       canvas { 
         border: 1px solid green; 
-        background-color: #000;
+        background-color: #999;
         /*background-image: url('nebula.jpg');*/
         background-size: 1586px 784px;
         z-index: 0;
