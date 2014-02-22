@@ -20,7 +20,7 @@
 
     $( document ).ready(function() {
       // init stuff
-      creep.src = 'images/icon_27452.svg';
+      // creep.src = 'images/icon_27452.svg';
 
       // key listeners 
       $( document ).keydown(function(event) {
@@ -72,7 +72,7 @@
         ctx.clearRect (0, 0, canvasEdgeX, canvasEdgeY)
         ctx.fillStyle = "rgba(0, 255, 0, 1)";
         
-        drawCreep(ctx);
+        my_creep.drawCreep(ctx);
  
       }
       else {
