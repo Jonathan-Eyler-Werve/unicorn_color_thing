@@ -11,6 +11,7 @@ function creep(posX,posY,direction,hitPoints){
 	this.posY=posY;
 	this.direction=direction;
 	this.hitPoints=hitPoints;
+	this.size=10;
 	this.image = new Image();
 	this.image.src = indifferentSmily;
 	this.randomShort = 5
@@ -38,17 +39,41 @@ function drawCreep(ctx){
 function updateCreeps(){
 
 	for (var i = 0; i < creeps.length; i++) {
-	    creeps[i].direction = creeps[i].direction + creeps[i].randomMedium;
+	    creeps[i].direction = creeps[i].direction + creeps[i].randomMedium - 5;
+	    creeps[i].posX = creeps[i].posX + creeps[i].randomShort - 2;
+	    creeps[i].posY = creeps[i].posY + creeps[i].randomMedium - 2;
+	    
+	    if (amIHit(creeps[i], creeps[i].posX, creeps[i].posY, creeps[i].size) == true) {
+	    	creeps[i].hitPoints = creeps[i].hitPoints - randomShort; 	
+	    };
+	    
+	    if (creeps[i].hitPoints < 1) {
+	    	deathRattle(creeps[i].posX, creeps[i].posY);
+	    	delete creeps[i]; // not using splice because extra cycles to reindex  
+	    };
+
 	};
 
 };
+
+
+
+function amIHit(creep,posX,posY,size){
+	return false; // temporary! 
+};
+
+function deathRattle(posX, posY){
+	alert("deathRattle - a creep has died")
+	console.log("deathRattle called")
+};
+
 
 function updateRandomFactors(){
 
 		if (gameLoopCounter%30 == 1){	// SHORT random factor generator
 		console.log("%30")
 		for (var i = 0; i < creeps.length; i++) {
-		    creeps[i].randomLong = to_i(((Math.random() * 10) + 1));
+		    creeps[i].randomShort = to_i(((Math.random() * 10) + 1));
 		    console.log(creeps[i].randomLong)
 		};
 	};

@@ -52,6 +52,6 @@ Set abitrarily. Attibutes hard coded.
 Keep it simple. 
 
 ### Make a creep
-* Creep can walk. 
-* Creep can get hit. 
+* Creep can walk. // DONE! 
+* Creep can get hit. // DONE!
 * Creep can die. 
