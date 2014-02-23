@@ -1,12 +1,18 @@
 <!--  Contains functions to create, draw and modify creeps -->
 
+// Image paths
+
+var indifferentSmily = 'images/icon_27452.svg';
+
+// 
+
 function creep(posX,posY,direction,hitPoints){
 	this.posX=posX;
 	this.posY=posY;
 	this.direction=direction;
 	this.hitPoints=hitPoints;
 	this.image = new Image();
-	this.image.src = 'images/icon_27452.svg';
+	this.image.src = indifferentSmily;
 	this.randomShort = 5
 	this.randomMedium = 5
 	this.randomLong = 5
