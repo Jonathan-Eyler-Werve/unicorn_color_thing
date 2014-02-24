@@ -54,4 +54,5 @@ Keep it simple.
 ### Make a creep
 * Creep can walk. // DONE! 
 * Creep can get hit. // DONE!
-* Creep can die. 
+* Creep can die. // DONE!
+
