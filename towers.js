@@ -10,7 +10,6 @@ function tower(posX,posY,type){
 	this.posX=posX;
 	this.posY=posY;
 	this.direction= 0;
-	this.hitPoints=hitPoints;
 	this.size= 10;
 	this.image = new Image();
 	this.image.src = imgRoundArrow;
