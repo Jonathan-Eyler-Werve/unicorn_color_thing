@@ -2,21 +2,21 @@
 
 // Image paths
 
-var indifferentSmily = 'images/icon_27452.svg';
+var imgIndifferentSmily = 'images/icon_27452.svg';
 
 // 
 
 function creep(posX,posY,direction,hitPoints){
-	this.posX=posX;
-	this.posY=posY;
-	this.direction=direction;
-	this.hitPoints=hitPoints;
-	this.size=10;
+	this.posX = posX;
+	this.posY = posY;
+	this.direction = direction;
+	this.hitPoints = hitPoints;
+	this.size = 10;
 	this.image = new Image();
-	this.image.src = indifferentSmily;
-	this.randomShort = 5
-	this.randomMedium = 5
-	this.randomLong = 5
+	this.image.src = imgIndifferentSmily;
+	this.randomShort = 5;
+	this.randomMedium = 5;
+	this.randomLong = 5;
 
 	this.drawCreep=drawCreep;
 	function drawCreep(ctx){
@@ -94,6 +94,8 @@ function updateRandomFactors(){
 		};
 	};
 }
+
+// DRIVER CODE FOR DEVELOPMENT
 
 var creeps = [];
 var my_creep = new creep(100,100,180,10);
