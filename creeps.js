@@ -36,6 +36,13 @@ function drawCreep(ctx){
   ctx.restore();
 };
 
+function drawAllCreeps(ctx){
+	for (var i = 0; i < creeps.length; i++) {
+       creeps[i].drawCreep(ctx);
+  };
+
+};
+
 function updateCreeps(){
 
 	for (var i = 0; i < creeps.length; i++) {
@@ -101,6 +108,9 @@ var creeps = [];
 
 var my_creep = new creep(100,100,180,10);
 creeps.push(my_creep)
+
+var my_other_creep = new creep(150,150,180,10);
+creeps.push(my_other_creep)
 
 // console.log(my_creep);
 // console.log(creeps);
