@@ -40,7 +40,6 @@ function drawAllCreeps(ctx){
 	for (var i = 0; i < creeps.length; i++) {
        creeps[i].drawCreep(ctx);
   };
-
 };
 
 function updateCreeps(){
@@ -105,6 +104,8 @@ function updateRandomFactors(collection){
 var creeps = [];
 
 // DRIVER CODE FOR DEVELOPMENT
+
+
 
 var my_creep = new creep(100,100,180,10);
 creeps.push(my_creep)

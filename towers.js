@@ -22,7 +22,7 @@ function tower(posX,posY,type){
 	function drawTower(ctx){
 		ctx.save();
 	  ctx.translate(this.posX, this.posY);
-	  ctx.rotate(to_rad(this.direction));
+	  ctx.rotate(this.direction);
 		ctx.drawImage(this.image,-50,-50);
 	  ctx.restore();
 	};
@@ -32,6 +32,7 @@ function tower(posX,posY,type){
 function drawAllTowers(ctx){
 	for (var i = 0; i < towers.length; i++) {
        towers[i].drawTower(ctx);
+       console.log("tower " + i + " direction: " +towers[i].direction)
   };
 };
 
@@ -62,13 +63,12 @@ function findClosestTarget(x, y) { // finds nearest creep
 	return index 	
 };
 
-function aimTower(x, y, target) {
+function aimTower(x, y, _target) {
 	
-	var distanceX = target.posX - x; 
-	var distanceY = target.posY - y;
- 	var direction = Math.atan(450/120)
- 	alert(direction)
- 	return direction
+	var _distanceX = (creeps[_target].posX) - x;
+	var _distanceY = ((creeps[_target].posY) - y ) * -1;
+ 	var _direction = Math.atan2(_distanceX, _distanceY)
+ 	return _direction
 };
 
 
@@ -77,8 +77,11 @@ var towers = [];
 // DRIVER CODE FOR DEV
 
 
-var my_tower = new tower(500,500,180,10);
+var mah_tower = new tower(100,200,180,10);
+towers.push(mah_tower)
+
+var my_tower = new tower(100,300,180,10);
 towers.push(my_tower)
 
-var my_other_tower = new tower(200,100,180,10);
+var my_other_tower = new tower(500,300,180,10);
 towers.push(my_other_tower)

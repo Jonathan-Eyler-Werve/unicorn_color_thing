@@ -14,7 +14,7 @@
 
     var dead = false;
     var gameLoopCounter = 0;
-    var frameRate = 30; // frames per second
+    var frameRate = 5; // frames per second
     var cycleTime = (1000 / frameRate);
     var canvasEdgeX = 1000; // sync this with HTML below
     var canvasEdgeY = 800; // sync this with HTML below
@@ -36,15 +36,15 @@
       $( document ).keyup(function(event) {
         event.preventDefault();
 
-        if ( event.which == 190 || event.which == 188) { // > or <
-          changePitch = 0;
-        };
+        // if ( event.which == 190 || event.which == 188) { // > or <
+        //   changePitch = 0;
+        // };
       });
     });
 
     function loop(){
       setInterval(function(){
-        if (gameLoopCounter > 300){
+        if (gameLoopCounter > 100){
           dead = true;
         };
 
@@ -124,6 +124,10 @@
       return _degrees * (Math.PI / 180)
     };
 
+    function to_degrees(_rad){
+      return _rad / (Math.PI / 180)
+    };
+
   </script>
 
 
@@ -137,7 +141,7 @@
     console.log("Math.sin(to_rad(90)) = 1 " + (Math.sin(to_rad(90)) == 1));
     console.log("Math.sin(to_rad(270)) = -1 " + (Math.sin(to_rad(270)) == -1));  
     console.log("Degrees to radians = " + (to_rad(180) == Math.PI));
-    
+
   </script>
 
 
