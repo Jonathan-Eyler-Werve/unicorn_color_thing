@@ -16,6 +16,7 @@ function tower(posX,posY,type){
 	this.randomShort = 5;
 	this.randomMedium = 5;
 	this.randomLong = 5;
+	this.targetCreep = undefined;
 
 	this.drawTower=drawTower;
 	function drawTower(ctx){
@@ -25,9 +26,32 @@ function tower(posX,posY,type){
 		ctx.drawImage(this.image,-50,-50);
 	  ctx.restore();
 	};
+
+
+	function aimTower(target) {
+		// points tower direction at targetCreep 
+	};
+
 };
 
+function updateTowers(){
 
+	for (var i = 0; i < towers.length; i++) {
+		towers[i].targetCreep = findClosestTarget(towers[i].posX,towers[i].posY);
+	};
+
+};
+
+function findClosestTarget(x,y) { // finds nearest creep 
+	var index = undefined
+	for (var i = 0; i < creeps.length; i++) {
+
+		// creepX, creepY - posx, posY = diff
+		// diff to distance  
+		// sort by distance 
+
+	};
+};
 
 var towers = [];
 

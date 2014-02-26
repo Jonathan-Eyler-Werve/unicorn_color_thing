@@ -68,7 +68,32 @@ function deathRattle(posX, posY){
 };
 
 
+function updateRandomFactors(collection){
 
+		if (gameLoopCounter%30 == 1){	// SHORT random factor generator
+		console.log("%30")
+		for (var i = 0; i < creeps.length; i++) {
+		    creeps[i].randomShort = to_i(((Math.random() * 10) + 1));
+		    console.log(creeps[i].randomLong)
+		};
+	};
+
+	if (gameLoopCounter%100 == 1){	// MEDIUM random factor generator
+		console.log("%100")
+		for (var i = 0; i < creeps.length; i++) {
+		    creeps[i].randomMedium = to_i(((Math.random() * 10) + 1));
+		    console.log(creeps[i].randomMedium)
+		};
+	};
+
+	if (gameLoopCounter%1000 == 1){	// LONG random factor generator
+		console.log("%1000")
+		for (var i = 0; i < creeps.length; i++) {
+		    creeps[i].randomLong = to_i(((Math.random() * 10) + 1));
+		    console.log(creeps[i].randomLong)
+		};
+	};
+}
 
 var creeps = [];
 
