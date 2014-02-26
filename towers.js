@@ -28,3 +28,10 @@ function tower(posX,posY,type){
 	};
 };
 
+
+
+var towers = [];
+
+var my_tower = new tower(500,500,180,10);
+
+towers.push(my_tower)
