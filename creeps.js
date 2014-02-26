@@ -95,13 +95,13 @@ function updateRandomFactors(){
 	};
 }
 
+var creeps = [];
+
 // DRIVER CODE FOR DEVELOPMENT
 
-var creeps = [];
 var my_creep = new creep(100,100,180,10);
 creeps.push(my_creep)
 
-console.log(my_creep);
-console.log(creeps);
-
-console.log(creeps[0].direction)
+// console.log(my_creep);
+// console.log(creeps);
+// console.log(creeps[0].direction)
