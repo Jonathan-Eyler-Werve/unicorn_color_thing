@@ -14,7 +14,7 @@
 
     var dead = false;
     var gameLoopCounter = 0;
-    var frameRate = 1; // frames per second
+    var frameRate = 30; // frames per second
     var cycleTime = (1000 / frameRate);
     var canvasEdgeX = 1000; // sync this with HTML below
     var canvasEdgeY = 800; // sync this with HTML below
@@ -44,7 +44,7 @@
 
     function loop(){
       setInterval(function(){
-        if (gameLoopCounter > 30){
+        if (gameLoopCounter > 300){
           dead = true;
         };
 
@@ -79,12 +79,8 @@
         ctx.clearRect (0, 0, canvasEdgeX, canvasEdgeY)
         ctx.fillStyle = "rgba(0, 255, 0, 1)";
         
-
-
         drawAllCreeps(ctx);
-
- 
-        my_tower.drawTower(ctx);
+        drawAllTowers(ctx);
  
       }
       else {
@@ -149,7 +145,7 @@
     <style type="text/css">
       canvas { 
         border: 1px solid green; 
-        background-color: #999;
+        background-color: #ddd;
         /*background-image: url('nebula.jpg');*/
         background-size: 1586px 784px;
         z-index: 0;

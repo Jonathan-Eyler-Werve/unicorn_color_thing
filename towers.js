@@ -27,23 +27,23 @@ function tower(posX,posY,type){
 	  ctx.restore();
 	};
 
+};
 
-	function aimTower(target) {
-		// points tower direction at targetCreep 
-	};
-
+function drawAllTowers(ctx){
+	for (var i = 0; i < towers.length; i++) {
+       towers[i].drawTower(ctx);
+  };
 };
 
 function updateTowers(){
-	console.log("updateTowers starts")
 	for (var i = 0; i < towers.length; i++) {
 		towers[i].targetCreep = findClosestTarget(towers[i].posX,towers[i].posY);
-		console.log("target creep tower " + i +"; creep = "+ towers[i].targetCreep)
+		towers[i].direction = aimTower(towers[i].posX,towers[i].posY,towers[i].targetCreep)
+		// console.log("target creep tower " + i +"; creep = "+ towers[i].targetCreep)
 	};
-	console.log("updateTowers completes")
 };
 
-function findClosestTarget(x,y) { // finds nearest creep 
+function findClosestTarget(x, y) { // finds nearest creep 
 	var creepDistance = undefined;
 	for (var i = 0; i < creeps.length; i++) {
 		if (creeps[i] != undefined) {
@@ -51,18 +51,26 @@ function findClosestTarget(x,y) { // finds nearest creep
 			var distanceX = creeps[i].posX - x 
 			var distanceY = creeps[i].posY - y 
 			var distance = Math.sqrt((distanceX * distanceX) + (distanceY * distanceY))
-			console.log("findClosestTarget " + i + ": distance = " + distance) 
-			console.log("findClosestTarget " + i + ": creepDistance = " + creepDistance) 
+
 			if (creepDistance > distance || creepDistance == undefined) {
 				index = i;
 				creepDistance = distance; 
-				console.log("findClosestTarget: index set to " + i)
+				// console.log("findClosestTarget: index set to " + i)
 			};
 		};
 	};
-	console.log("Find closest target: index = " + index )
 	return index 	
 };
+
+function aimTower(x, y, target) {
+	
+	var distanceX = target.posX - x; 
+	var distanceY = target.posY - y;
+ 	var direction = Math.atan(450/120)
+ 	alert(direction)
+ 	return direction
+};
+
 
 var towers = [];
 
@@ -70,5 +78,7 @@ var towers = [];
 
 
 var my_tower = new tower(500,500,180,10);
-
 towers.push(my_tower)
+
+var my_other_tower = new tower(200,100,180,10);
+towers.push(my_other_tower)
