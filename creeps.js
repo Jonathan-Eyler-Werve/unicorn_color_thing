@@ -1,4 +1,4 @@
-<!--  Contains functions to create, draw and modify creeps -->
+//<!--  Contains functions to create, draw and modify creeps -->
 
 // Image paths
 
