@@ -19,7 +19,7 @@ function tower(posX,posY,type){
 	this.randomLong = 5;
 
 	this.drawTower=drawTower;
-	function drawCreep(ctx){
+	function drawTower(ctx){
 		ctx.save();
 	  ctx.translate(this.posX, this.posY);
 	  ctx.rotate(to_rad(this.direction));
@@ -27,3 +27,4 @@ function tower(posX,posY,type){
 	  ctx.restore();
 	};
 };
+
