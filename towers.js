@@ -2,7 +2,7 @@
 
 // Image paths
 
-var imgRoundArrow = 'images/icon_5438.svg';
+var imgRoundArrow = 'images/icon_5438.svg'; // Arrow by Jamison Wieser from The Noun Project
 
 // 
 
