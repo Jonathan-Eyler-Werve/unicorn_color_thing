@@ -9,10 +9,10 @@ Towers have:
 * rest period 
 * damage quanta 
 * range
-* directionOfAim 
+* direction / DONE 
 
 Towers do: 
-* aim
+* aim / DONE (line of sight aiming)
 * fire 
 * rest 
 
@@ -24,7 +24,7 @@ Creeps have:
 * Intellegence (for route finding, evasion?)
 
 Creeps do: 
-* walk
+* walk 
 * routeFind
 * getHit
 * die
