@@ -46,8 +46,8 @@ function updateCreeps(){
 
 	for (var i = 0; i < creeps.length; i++) {
 	    creeps[i].direction = creeps[i].direction + creeps[i].randomMedium - 5;
-	    creeps[i].posX = creeps[i].posX + creeps[i].randomShort - 2;
-	    creeps[i].posY = creeps[i].posY + creeps[i].randomMedium - 2;
+	    creeps[i].posX = creeps[i].posX + creeps[i].randomShort - 5;
+	    creeps[i].posY = creeps[i].posY + creeps[i].randomMedium - 5;
 	    
 	    if (amIHit(creeps[i], creeps[i].posX, creeps[i].posY, creeps[i].size) == true) {
 	    	creeps[i].hitPoints = creeps[i].hitPoints - randomShort; 	
