@@ -63,6 +63,14 @@ function findClosestTarget(x, y) { // finds nearest creep
 	return index 	
 };
 
+// FIND DIRECTION OF OBJECT. 
+
+// FIND DISTANCE OF OBJECT.
+
+// DO THESE TWO THINGS INTERSECT? 
+
+ 
+
 function aimTower(x, y, _target) {
 	
 	var _distanceX = (creeps[_target].posX) - x;
