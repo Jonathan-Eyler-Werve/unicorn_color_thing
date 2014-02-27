@@ -2,7 +2,7 @@
 
 // Image paths
 
-var imgIndifferentSmily = 'images/icon_27452.svg';
+var imgIndifferentSmily = 'images/icon_27452.svg'; // Indifferent by Nicolás Celedón from The Noun Project
 
 // 
 
