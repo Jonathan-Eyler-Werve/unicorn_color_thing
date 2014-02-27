@@ -14,7 +14,7 @@
 
     var dead = false;
     var gameLoopCounter = 0;
-    var frameRate = 5; // frames per second
+    var frameRate = 20; // frames per second
     var cycleTime = (1000 / frameRate);
     var canvasEdgeX = 1000; // sync this with HTML below
     var canvasEdgeY = 800; // sync this with HTML below
@@ -44,7 +44,7 @@
 
     function loop(){
       setInterval(function(){
-        if (gameLoopCounter > 100){
+        if (gameLoopCounter > 1000){
           dead = true;
         };
 
