@@ -17,6 +17,7 @@ function tower(posX,posY){
 	this.randomMedium = 5;
 	this.randomLong = 5;
 	this.targetCreep = undefined;
+	this.towerRange = 100; // dynamic or inherited later 
 
 	this.drawTower=drawTower;
 	function drawTower(ctx){
