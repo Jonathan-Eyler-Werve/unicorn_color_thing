@@ -3,6 +3,7 @@
 // Image paths
 
 var imgRoundArrow = 'images/icon_5438.svg'; // Arrow by Jamison Wieser from The Noun Project
+var imgKaboom = 'images/icon_31635.svg'; // Atomic by Jerry Wang from The Noun Project
 
 // 
 
@@ -33,15 +34,22 @@ function tower(posX,posY){
 function drawAllTowers(ctx){
 	for (var i = 0; i < towers.length; i++) {
        towers[i].drawTower(ctx);
-       console.log("tower " + i + " direction: " +towers[i].direction)
+       // console.log("tower " + i + " direction: " +towers[i].direction)
   };
 };
 
 function updateTowers(){
 	for (var i = 0; i < towers.length; i++) {
 		towers[i].targetCreep = findClosestTarget(i);
-		towers[i].direction = aimTower(towers[i].posX,towers[i].posY,towers[i].targetCreep)
-		// console.log("target creep tower " + i +"; creep = "+ towers[i].targetCreep)
+		towers[i].direction = aimTower(towers[i].posX,towers[i].posY,towers[i].targetCreep);
+	
+		// if (inRange(i, towers[i].targetCreep)) {
+		// 	towers[i].image.src = imgKaboom;
+		// }
+		// else {
+		// 	towers[i].image.src = imgRoundArrow;
+		// };
+		
 	};
 };
 
@@ -55,7 +63,6 @@ function findClosestTarget(towerIndex) { // finds nearest creep
 			if (creepDistance > _distance || creepDistance == undefined) {
 				index = i;
 				creepDistance = _distance; 
-				// console.log("findClosestTarget: index set to " + i)
 			};
 		};
 	};
@@ -64,12 +71,7 @@ function findClosestTarget(towerIndex) { // finds nearest creep
 
 // FIND DIRECTION OF CREEP. 
 
-
-
-
-
-
-
+// AM I IN RANGE? 
 
 function getDistance(towerIndex, creepIndex){ // FIND DISTANCE FROM TOWER TO CREEP
 	var distanceX = creeps[creepIndex].posX - towers[towerIndex].posX 
@@ -78,6 +80,14 @@ function getDistance(towerIndex, creepIndex){ // FIND DISTANCE FROM TOWER TO CRE
 	return distance 
 };
 
+function inRange(towerIndex, creepIndex){
+	if (towers[towerIndex].towerRange >= getDistance(towerIndex, creepIndex)) {
+		return true
+	}
+	else { 
+		return false 
+	};
+};
 
 // DO THESE TWO THINGS INTERSECT? 
 
