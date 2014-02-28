@@ -38,24 +38,22 @@ function drawAllTowers(ctx){
 
 function updateTowers(){
 	for (var i = 0; i < towers.length; i++) {
-		towers[i].targetCreep = findClosestTarget(towers[i].posX,towers[i].posY);
+		towers[i].targetCreep = findClosestTarget(i);
 		towers[i].direction = aimTower(towers[i].posX,towers[i].posY,towers[i].targetCreep)
 		// console.log("target creep tower " + i +"; creep = "+ towers[i].targetCreep)
 	};
 };
 
-function findClosestTarget(x, y) { // finds nearest creep 
+function findClosestTarget(towerIndex) { // finds nearest creep 
 	var creepDistance = undefined;
 	for (var i = 0; i < creeps.length; i++) {
 		if (creeps[i] != undefined) {
 
-			var distanceX = creeps[i].posX - x 
-			var distanceY = creeps[i].posY - y 
-			var distance = Math.sqrt((distanceX * distanceX) + (distanceY * distanceY))
+			var _distance =	getDistance(towerIndex, i)
 
-			if (creepDistance > distance || creepDistance == undefined) {
+			if (creepDistance > _distance || creepDistance == undefined) {
 				index = i;
-				creepDistance = distance; 
+				creepDistance = _distance; 
 				// console.log("findClosestTarget: index set to " + i)
 			};
 		};
@@ -63,9 +61,22 @@ function findClosestTarget(x, y) { // finds nearest creep
 	return index 	
 };
 
-// FIND DIRECTION OF OBJECT. 
+// FIND DIRECTION OF CREEP. 
 
-// FIND DISTANCE OF OBJECT.
+
+
+
+
+
+
+
+function getDistance(towerIndex, creepIndex){ // FIND DISTANCE FROM TOWER TO CREEP
+	var distanceX = creeps[creepIndex].posX - towers[towerIndex].posX 
+	var distanceY = creeps[creepIndex].posY - towers[towerIndex].posY 
+	var distance = Math.sqrt((distanceX * distanceX) + (distanceY * distanceY))
+	return distance 
+};
+
 
 // DO THESE TWO THINGS INTERSECT? 
 
