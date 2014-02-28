@@ -6,7 +6,7 @@ var imgRoundArrow = 'images/icon_5438.svg'; // Arrow by Jamison Wieser from The 
 
 // 
 
-function tower(posX,posY,type){
+function tower(posX,posY){
 	this.posX=posX;
 	this.posY=posY;
 	this.direction= 0;
@@ -96,11 +96,11 @@ var towers = [];
 // DRIVER CODE FOR DEV
 
 
-var mah_tower = new tower(100,200,180,10);
+var mah_tower = new tower(100,200);
 towers.push(mah_tower)
 
-var my_tower = new tower(100,300,180,10);
+var my_tower = new tower(100,300);
 towers.push(my_tower)
 
-var my_other_tower = new tower(500,300,180,10);
+var my_other_tower = new tower(500,300);
 towers.push(my_other_tower)
