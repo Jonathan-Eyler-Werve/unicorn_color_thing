@@ -21,8 +21,6 @@ function tower(posX,posY){
 	this.randomShort = 5;
 	this.randomMedium = 5;
 	this.randomLong = 5;
-	this.targetCreep = undefined;
-	this.towerRange = 100; // dynamic or inherited later 
 	this.targetCreep = 0;
 	this.towerRange = 10; // dynamic or inherited later 
 	this.explodeCycle = undefined;
@@ -40,23 +38,28 @@ function tower(posX,posY){
 
 function drawAllTowers(ctx){
 	for (var i = 0; i < towers.length; i++) {
-       towers[i].drawTower(ctx);
-       // console.log("tower " + i + " direction: " +towers[i].direction)
+		if (towers[i] != undefined) {
+      towers[i].drawTower(ctx);
+    };
   };
 };
 
 function updateTowers(){
 	for (var i = 0; i < towers.length; i++) {
-		towers[i].targetCreep = findClosestTarget(i);
-		towers[i].direction = aimTower(towers[i].posX,towers[i].posY,towers[i].targetCreep);
-	
+		if (towers[i] != undefined) {
+			towers[i].targetCreep = findClosestTarget(i);
+			towers[i].direction = aimTower(towers[i].posX,towers[i].posY,towers[i].targetCreep);
+			chaseTargets(i);
+			explode(i);
+		};
+
 		// if (inRange(i, towers[i].targetCreep)) {
 		// 	towers[i].image.src = imgKaboom;
 		// }
 		// else {
 		// 	towers[i].image.src = imgRoundArrow;
 		// };
-		
+
 	};
 };
 
@@ -104,6 +107,20 @@ function findClosestTarget(towerIndex) { // finds nearest creep
 // AM I IN RANGE? 
 
 function getDistance(towerIndex, creepIndex){ // FIND DISTANCE FROM TOWER TO CREEP
+	// if ((towers[towerIndex] == undefined) || (creeps[creepIndex] == undefined)) {
+
+	if (towers[towerIndex] == undefined) {
+		console.log("getDistance aborted early due to undefined tower Object")
+		console.log("towerIndex = " + towerIndex)
+		return 
+	};
+
+	if (creeps[creepIndex] == undefined) {
+		console.log("getDistance aborted early due to undefined creep Object")
+		console.log("creepIndex = " + creepIndex)
+		return 
+	};
+
 	var distanceX = creeps[creepIndex].posX - towers[towerIndex].posX 
 	var distanceY = creeps[creepIndex].posY - towers[towerIndex].posY 
 	var distance = Math.sqrt((distanceX * distanceX) + (distanceY * distanceY))
