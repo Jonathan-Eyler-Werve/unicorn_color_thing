@@ -23,6 +23,9 @@ function tower(posX,posY){
 	this.randomLong = 5;
 	this.targetCreep = undefined;
 	this.towerRange = 100; // dynamic or inherited later 
+	this.targetCreep = 0;
+	this.towerRange = 10; // dynamic or inherited later 
+	this.explodeCycle = undefined;
 
 	this.drawTower=drawTower;
 	function drawTower(ctx){
@@ -55,6 +58,29 @@ function updateTowers(){
 		// };
 		
 	};
+};
+
+
+function explode(i) {
+	if (creeps[towers[i].targetCreep] == undefined) {
+		console.log("explode returns early due to undefined targetCreep")
+		return
+	};
+
+	var _distance = getDistance(i, towers[i].targetCreep);
+	
+	if ( (_distance < towers[i].towerRange) && (towers[i].explodeCycle == undefined) ) {		
+		towers[i].image.src = imgBang;
+		towers[i].explodeCycle = gameLoopCounter;
+		console.log("Explode triggered! Tower: " + i)
+		towers[i].direction = towers[i].direction + 5
+	};
+
+	if ( towers[i].explodeCycle + 10 < gameLoopCounter )  {		
+		towers[i] = undefined;
+		console.log("Explode ended! Tower: " + i)
+	};
+
 };
 
 function findClosestTarget(towerIndex) { // finds nearest creep 
