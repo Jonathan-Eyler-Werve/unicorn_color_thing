@@ -102,7 +102,7 @@ function aimTower(x, y, _target) {
 	var _distanceX = (creeps[_target].posX) - x;
 	var _distanceY = ((creeps[_target].posY) - y ) * -1;
  	var _direction = Math.atan2(_distanceX, _distanceY)
- 	return _direction
+ 	return _direction - to_rad(90) // left turn to correct image
 };
 
 
