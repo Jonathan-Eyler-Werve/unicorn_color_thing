@@ -1,3 +1,5 @@
+console.log("snap.svg.js is loading")
+
 // Snap.svg 0.2.0
 // 
 // Copyright (c) 2013 Adobe Systems Incorporated. All rights reserved.

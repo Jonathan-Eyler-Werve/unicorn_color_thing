@@ -1,3 +1,5 @@
+console.log("jquery-2.1.0.js is loading")
+
 /*!
  * jQuery JavaScript Library v2.1.0
  * http://jquery.com/
