@@ -3,6 +3,12 @@
 // Image paths
 
 var imgIndifferentSmily = 'images/icon_27452.svg'; // Indifferent by Nicolás Celedón from The Noun Project
+var imgRudolf = 'images/icon_27366.svg'; // Reindeer by Factorio.us collective from the Noun Project
+var imgGlow = 'images/icon_8502.svg'; // Idea by Björn Andersson from the Noun Project
+var imgAngryDiamond = 'images/icon_6607.svg'; // Explosion by Polina Flegontovna from the Noun Project
+var imgBang = 'images/icon_2348.svg'; // Explosion by Renee Ramsey-Passmore from the Noun Project
+
+var imgTruckKaboom = 'images/icon_3243.svg'; // Armored Truck designed by Luis Prado from the Noun Project
 
 // 
 
@@ -13,7 +19,7 @@ function creep(posX,posY,direction,hitPoints){
 	this.hitPoints = hitPoints;
 	this.size = 10;
 	this.image = new Image();
-	this.image.src = imgIndifferentSmily;
+	this.image.src = imgRudolf;
 	this.randomShort = 5;
 	this.randomMedium = 5;
 	this.randomLong = 5;
