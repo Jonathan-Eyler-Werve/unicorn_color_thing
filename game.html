@@ -16,10 +16,11 @@
 
     var dead = false;
     var gameLoopCounter = 0;
-    var frameRate = 20; // frames per second
-    var cycleTime = (1000 / frameRate);
+    var frameRate = 30; // frames per second
+    var cycleTime = (1500 / frameRate);
     var canvasEdgeX = 1000; // sync this with HTML below
     var canvasEdgeY = 800; // sync this with HTML below
+    var killCycle = 1500 // for debugging, game loop shuts off after number of cycles
 
     $( document ).ready(function() {
       // init stuff
@@ -46,7 +47,7 @@
 
     function loop(){
       setInterval(function(){
-        if (gameLoopCounter > 500){
+        if (gameLoopCounter > killCycle){
           dead = true;
         };
 

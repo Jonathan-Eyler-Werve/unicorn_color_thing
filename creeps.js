@@ -112,9 +112,13 @@ var creeps = [];
 // DRIVER CODE FOR DEVELOPMENT
 
 
-
-var my_creep = new creep(100,100,180,10);
+var my_creep = new creep(300,100,180,10);
+var my_creep2 = new creep(100,500,180,10);
+var my_creep3 = new creep(200,100,180,10);
 creeps.push(my_creep)
+creeps.push(my_creep3)
+creeps.push(my_creep2)
+
 
 var my_other_creep = new creep(150,150,180,10);
 creeps.push(my_other_creep)
