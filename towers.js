@@ -86,6 +86,24 @@ function explode(i) {
 
 };
 
+
+function chaseTargets(i){
+
+		if ( creeps[towers[i].targetCreep].posX > towers[i].posX ){
+			towers[i].posX++  
+		}
+		else {
+			towers[i].posX-- 
+		};
+
+		if ( creeps[towers[i].targetCreep].posY > towers[i].posY ){
+			towers[i].posY++  
+		}
+		else {
+			towers[i].posY-- 
+		};
+}
+
 function findClosestTarget(towerIndex) { // finds nearest creep 
 	var creepDistance = undefined;
 	for (var i = 0; i < creeps.length; i++) {
