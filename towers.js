@@ -74,6 +74,7 @@ function explode(i) {
 	
 	if ( (_distance < towers[i].towerRange) && (towers[i].explodeCycle == undefined) ) {		
 		towers[i].image.src = imgBang;
+		creeps[towers[i].targetCreep].image.src = imgDeer;
 		towers[i].explodeCycle = gameLoopCounter;
 		console.log("Explode triggered! Tower: " + i)
 		towers[i].direction = towers[i].direction + 5
