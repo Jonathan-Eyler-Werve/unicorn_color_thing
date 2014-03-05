@@ -14,6 +14,8 @@ function tower(posX,posY){
 	this.size = 10;
 	this.image = new Image();
 	this.image.src = imgRoundArrow;
+	this.image.height = 10;
+  this.image.width = 10;
 	this.randomShort = 5;
 	this.randomMedium = 5;
 	this.randomLong = 5;
@@ -22,12 +24,19 @@ function tower(posX,posY){
 	this.explodeCycle = undefined;
 
 
-	this.drawTower=drawTower;
+	this.drawTower = drawTower;
 	function drawTower(ctx){
 		ctx.save();
 	  ctx.translate(this.posX, this.posY);
 	  ctx.rotate(this.direction);
-		ctx.drawImage(this.image,-50,-50);
+
+	  ctx.beginPath();
+	  ctx.lineWidth = 5
+	  ctx.moveTo(0,0);
+	  ctx.lineTo(0, 5);
+	  ctx.stroke();
+
+		// ctx.drawImage(this.image,-50,-50);
 	  ctx.restore();
 	};
 
@@ -45,7 +54,7 @@ function updateTowers(){
 	for (var i = 0; i < towers.length; i++) {
 		if (towers[i] != undefined) {
 			towers[i].targetCreep = findClosestTarget(i);
-			towers[i].direction = aimTower(towers[i].posX,towers[i].posY,towers[i].targetCreep);
+			towers[i].direction = aimTower(i);
 			chaseTargets(i);
 			explode(i);
 		};
@@ -91,7 +100,7 @@ function explode(i) {
 
 
 function updateThrustX(i) {
-	console.log("direction " + towers[i].direction)
+	// console.log("direction " + towers[i].direction)
   return (towers[i].thrustPolar * Math.sin(towers[i].direction));
 }; 
 
@@ -101,7 +110,7 @@ function updateThrustY(i) {
 };
 
 function chaseTargets(i){
-	towers[i].thrustPolar = 1; // hardcoded for now
+	towers[i].thrustPolar = 2; // hardcoded for now
 
 	// console.log("tower " + i + ", thrustX = " + updateThrustX(i));
 
@@ -156,31 +165,17 @@ function getDistance(towerIndex, creepIndex){ // FIND DISTANCE FROM TOWER TO CRE
 	return distance 
 };
 
-// function inRange(towerIndex, creepIndex){
-// 	if (towers[towerIndex].towerRange >= getDistance(towerIndex, creepIndex)) {
-// 		return true
-// 	}
-// 	else { 
-// 		return false 
-// 	};
-// };
-
-// DO THESE TWO THINGS INTERSECT? 
-
- 
-
-function aimTower(x, y, _target) {
-	
-	var _distanceX = (creeps[_target].posX) - x;
-	var _distanceY = ((creeps[_target].posY) - y ) * -1;
- 	var _direction = Math.atan2(_distanceX, _distanceY)
- 	return _direction 
+function aimTower(i) {
+	if (towers[i] != undefined && creeps[towers[i].targetCreep] != undefined){
+		_target = towers[i].targetCreep
+		var _distanceX = (creeps[_target].posX) - towers[i].posX;
+		var _distanceY = ((creeps[_target].posY) - towers[i].posY ) * -1;
+	 	var _direction = Math.atan2(_distanceX, _distanceY)
+	 	return _direction
+  }; 
 };
 
-
 var towers = [];
-
-
 
 
 // DRIVER CODE FOR DEV
