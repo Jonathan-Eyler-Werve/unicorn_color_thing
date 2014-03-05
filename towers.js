@@ -2,9 +2,15 @@
 // 
 
 function tower(posX,posY){
-	this.posX=posX;
-	this.posY=posY;
-	this.direction= 0;
+	this.posX = posX;
+	this.posY = posY;
+	this.direction = 0;
+	this.directionSetting = 0;
+	this.thrustPolar = 0
+	this.thrustX = 0
+	this.thrustY = 0
+	this.inertiaX = 0
+	this.inertiaY = 0 	
 	this.size= 10;
 	this.image = new Image();
 	this.image.src = imgBullet;
@@ -14,6 +20,7 @@ function tower(posX,posY){
 	this.targetCreep = 0;
 	this.towerRange = 10; // dynamic or inherited later 
 	this.explodeCycle = undefined;
+
 
 	this.drawTower=drawTower;
 	function drawTower(ctx){
@@ -83,16 +90,28 @@ function explode(i) {
 };
 
 
+function updateThrustX(i) {
+  return (towers[i].thrust * Math.sin(to_rad(towers[i].direction)));
+}; 
+
+function updateThrustY(i) {
+  return (-1 * towers[i].thrust * Math.cos(to_rad(towers[i].direction)));
+};
+
 function chaseTargets(i){
-
-
+	towers[i].thrust = 10; // hardcoded for now
+	updateThrustY(i);
+	updateThrustX(i);
+	towers[i].posX = towers[i].posX + towers[i].thrustX;
+	towers[i].posY = towers[i].posY + towers[i].thrustY;
 // 1 current polar speed
-// 2 rate of accelleration
 // 1 actual direction
+
+// 2 rate of accelleration
 // 2 intended direction 
 // 2 rate of direction change 
 
-// relocate X and relocate Y based on polar speed & direction via trig
+// relocate towers[i].posX and relocate towers[i].posY based on polar speed & direction via trig
 
 
 
