@@ -85,19 +85,32 @@ function explode(i) {
 
 function chaseTargets(i){
 
-		if ( creeps[towers[i].targetCreep].posX > towers[i].posX ){
-			towers[i].posX++  
-		}
-		else {
-			towers[i].posX-- 
-		};
 
-		if ( creeps[towers[i].targetCreep].posY > towers[i].posY ){
-			towers[i].posY++  
-		}
-		else {
-			towers[i].posY-- 
-		};
+// 1 current polar speed
+// 2 rate of accelleration
+// 1 actual direction
+// 2 intended direction 
+// 2 rate of direction change 
+
+// relocate X and relocate Y based on polar speed & direction via trig
+
+
+
+
+
+		// if ( creeps[towers[i].targetCreep].posX > towers[i].posX ){
+		// 	towers[i].posX++  
+		// }
+		// else {
+		// 	towers[i].posX-- 
+		// };
+
+		// if ( creeps[towers[i].targetCreep].posY > towers[i].posY ){
+		// 	towers[i].posY++  
+		// }
+		// else {
+		// 	towers[i].posY-- 
+		// };
 }
 
 function findClosestTarget(towerIndex) { // finds nearest creep 
