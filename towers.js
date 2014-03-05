@@ -6,12 +6,12 @@ function tower(posX,posY){
 	this.posY = posY;
 	this.direction = 0;
 	this.directionSetting = 0;
-	this.thrustPolar = 0
-	this.thrustX = 0
-	this.thrustY = 0
-	this.inertiaX = 0
-	this.inertiaY = 0 	
-	this.size= 10;
+	this.thrustPolar = 0;
+	this.thrustX = 0;
+	this.thrustY = 0;
+	this.inertiaX = 0;
+	this.inertiaY = 0;	
+	this.size = 10;
 	this.image = new Image();
 	this.image.src = imgBullet;
 	this.randomShort = 5;
@@ -91,19 +91,28 @@ function explode(i) {
 
 
 function updateThrustX(i) {
-  return (towers[i].thrust * Math.sin(to_rad(towers[i].direction)));
+  return (towers[i].thrustPolar * Math.sin(towers[i].direction));
 }; 
 
 function updateThrustY(i) {
-  return (-1 * towers[i].thrust * Math.cos(to_rad(towers[i].direction)));
+  return (-1 * towers[i].thrustPolar * Math.cos(towers[i].direction));
 };
 
 function chaseTargets(i){
-	towers[i].thrust = 10; // hardcoded for now
-	updateThrustY(i);
-	updateThrustX(i);
-	towers[i].posX = towers[i].posX + towers[i].thrustX;
-	towers[i].posY = towers[i].posY + towers[i].thrustY;
+	towers[i].thrustPolar = .5; // hardcoded for now
+
+	// console.log("tower " + i + ", thrustX = " + updateThrustX(i));
+
+	towers[i].inertiaX = towers[i].inertiaX + updateThrustX(i);
+	towers[i].inertiaY = towers[i].inertiaY + updateThrustY(i);
+
+	// console.log("tower " + i + ", inertiaX = " + towers[i].inertiaX);
+
+	towers[i].posX += towers[i].inertiaX;
+	towers[i].posY += towers[i].inertiaY;
+}; 
+
+	// towers[i].posY = towers[i].posY + updateThrustY(i);
 // 1 current polar speed
 // 1 actual direction
 
@@ -114,23 +123,6 @@ function chaseTargets(i){
 // relocate towers[i].posX and relocate towers[i].posY based on polar speed & direction via trig
 
 
-
-
-
-		// if ( creeps[towers[i].targetCreep].posX > towers[i].posX ){
-		// 	towers[i].posX++  
-		// }
-		// else {
-		// 	towers[i].posX-- 
-		// };
-
-		// if ( creeps[towers[i].targetCreep].posY > towers[i].posY ){
-		// 	towers[i].posY++  
-		// }
-		// else {
-		// 	towers[i].posY-- 
-		// };
-}
 
 function findClosestTarget(towerIndex) { // finds nearest creep 
 	var creepDistance = undefined;
