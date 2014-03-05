@@ -11,6 +11,7 @@ function creep(posX,posY,direction,hitPoints){
 	this.randomShort = 5;
 	this.randomMedium = 5;
 	this.randomLong = 5;
+	this.deadCycle = undefined;
 
 	this.drawCreep=drawCreep;
 	function drawCreep(ctx){
@@ -47,15 +48,24 @@ function updateCreeps(){
 	    creeps[i].posX = creeps[i].posX + ((creeps[i].randomShort - 5) * .5);
 	    creeps[i].posY = creeps[i].posY + ((creeps[i].randomMedium - 5) * .5);
 	    
-	    if (amIHit(creeps[i], creeps[i].posX, creeps[i].posY, creeps[i].size) == true) {
-	    	creeps[i].hitPoints = creeps[i].hitPoints - randomShort; 	
-	    };
+	    // OVERTAKEN BY NEW TOWER CODE 
+	    // if (amIHit(creeps[i], creeps[i].posX, creeps[i].posY, creeps[i].size) == true) {
+	    // 	creeps[i].hitPoints = creeps[i].hitPoints - randomShort; 	
+	    // };
 	    
 	    if (creeps[i].hitPoints < 1) {
-	    	deathRattle(creeps[i].posX, creeps[i].posY);
-	    	delete creeps[i]; // not using splice because extra cycles to reindex  
-	    };
 
+	    	if (creeps[i].deadCycle == undefined) { 
+	    		creeps[i].deadCycle = gameLoopCounter;
+	    	};
+
+	    	deathRattle(creeps[i].posX, creeps[i].posY, i);
+
+	    	if (creeps[i].deadCycle < (gameLoopCounter - 50)) {
+	    		creeps[i] = undefined; 
+	    	};
+
+	    };
 	  };  
 	};
 
@@ -67,9 +77,9 @@ function amIHit(creep,posX,posY,size){
 	return false; // temporary! 
 };
 
-function deathRattle(posX, posY){
-	alert("deathRattle - a creep has died")
-	console.log("deathRattle called")
+function deathRattle(posX, posY, creepIndex){
+	// alert("deathRattle - a creep has died")
+	// console.log("deathRattle called")
 };
 
 
@@ -102,8 +112,7 @@ function updateRandomFactors(collection){
 
 var creeps = [];
 
-// DRIVER CODE FOR DEVELOPMENT
-
+// DRIVER CODE FOR DEV
 
 var my_creep = new creep(300,100,180,10);
 var my_creep2 = new creep(100,500,180,10);
