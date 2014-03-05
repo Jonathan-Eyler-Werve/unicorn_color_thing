@@ -13,7 +13,7 @@ function tower(posX,posY){
 	this.inertiaY = 0;	
 	this.size = 10;
 	this.image = new Image();
-	this.image.src = imgBullet;
+	this.image.src = imgRoundArrow;
 	this.randomShort = 5;
 	this.randomMedium = 5;
 	this.randomLong = 5;
@@ -91,15 +91,17 @@ function explode(i) {
 
 
 function updateThrustX(i) {
+	console.log("direction " + towers[i].direction)
   return (towers[i].thrustPolar * Math.sin(towers[i].direction));
 }; 
 
 function updateThrustY(i) {
+	// console.log(towers[i].direction)
   return (-1 * towers[i].thrustPolar * Math.cos(towers[i].direction));
 };
 
 function chaseTargets(i){
-	towers[i].thrustPolar = .5; // hardcoded for now
+	towers[i].thrustPolar = 1; // hardcoded for now
 
 	// console.log("tower " + i + ", thrustX = " + updateThrustX(i));
 
@@ -111,17 +113,6 @@ function chaseTargets(i){
 	towers[i].posX += towers[i].inertiaX;
 	towers[i].posY += towers[i].inertiaY;
 }; 
-
-	// towers[i].posY = towers[i].posY + updateThrustY(i);
-// 1 current polar speed
-// 1 actual direction
-
-// 2 rate of accelleration
-// 2 intended direction 
-// 2 rate of direction change 
-
-// relocate towers[i].posX and relocate towers[i].posY based on polar speed & direction via trig
-
 
 
 function findClosestTarget(towerIndex) { // finds nearest creep 
@@ -183,7 +174,7 @@ function aimTower(x, y, _target) {
 	var _distanceX = (creeps[_target].posX) - x;
 	var _distanceY = ((creeps[_target].posY) - y ) * -1;
  	var _direction = Math.atan2(_distanceX, _distanceY)
- 	return _direction - to_rad(90) // left turn to correct image
+ 	return _direction 
 };
 
 
