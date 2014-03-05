@@ -154,14 +154,14 @@ function getDistance(towerIndex, creepIndex){ // FIND DISTANCE FROM TOWER TO CRE
 	return distance 
 };
 
-function inRange(towerIndex, creepIndex){
-	if (towers[towerIndex].towerRange >= getDistance(towerIndex, creepIndex)) {
-		return true
-	}
-	else { 
-		return false 
-	};
-};
+// function inRange(towerIndex, creepIndex){
+// 	if (towers[towerIndex].towerRange >= getDistance(towerIndex, creepIndex)) {
+// 		return true
+// 	}
+// 	else { 
+// 		return false 
+// 	};
+// };
 
 // DO THESE TWO THINGS INTERSECT? 
 
