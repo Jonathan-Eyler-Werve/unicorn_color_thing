@@ -195,17 +195,17 @@ var towers = [];
 // DRIVER CODE FOR DEV
 
 
-var mah_tower3 = new tower(200,500);
-towers.push(mah_tower3)
+// var mah_tower3 = new tower(200,500);
+// towers.push(mah_tower3)
 
-var mah_tower2 = new tower(300,200);
-towers.push(mah_tower2)
+// var mah_tower2 = new tower(300,200);
+// towers.push(mah_tower2)
 
-var mah_tower = new tower(100,200);
+var mah_tower = new tower(100,100);
 towers.push(mah_tower)
 
-var my_tower = new tower(100,300);
-towers.push(my_tower)
+// var my_tower = new tower(100,300);
+// towers.push(my_tower)
 
-var my_other_tower = new tower(500,300);
-towers.push(my_other_tower)
+// var my_other_tower = new tower(500,300);
+// towers.push(my_other_tower)
