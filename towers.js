@@ -1,14 +1,4 @@
 //<!--  Contains functions to create, draw and modify towers -->
-
-// Image paths
-
-var imgRoundArrow = 'images/icon_5438.svg'; // Arrow by Jamison Wieser from The Noun Project
-var imgKaboom = 'images/icon_31635.svg'; // Atomic by Jerry Wang from The Noun Project
-var imgLight = 'images/icon_34791.svg'; // Flashlight by Alex AS from the Noun Project
-var imgGlow = 'images/icon_8502.svg'; // Idea by Björn Andersson from the Noun Project
-var imgBullet = 'images/icon_30254.svg'; // Bullet designed by Broquil broquil from the Noun Project
-var imgBang = 'images/icon_2348.svg'; // Explosion by Renee Ramsey-Passmore from the Noun Project
-
 // 
 
 function tower(posX,posY){
