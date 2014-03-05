@@ -44,9 +44,9 @@ function updateCreeps(){
 	for (var i = 0; i < creeps.length; i++) {
     if (creeps[i] != undefined) {
 
-	    // creeps[i].direction = creeps[i].direction + ((creeps[i].randomMedium - 5) * .3);
-	    // creeps[i].posX = creeps[i].posX + ((creeps[i].randomShort - 5) * .5);
-	    // creeps[i].posY = creeps[i].posY + ((creeps[i].randomMedium - 5) * .5);
+	    creeps[i].direction = creeps[i].direction + ((creeps[i].randomMedium - 5) * .3);
+	    creeps[i].posX = creeps[i].posX + ((creeps[i].randomShort - 5) * .5);
+	    creeps[i].posY = creeps[i].posY + ((creeps[i].randomMedium - 5) * .5);
 	    
 	    // OVERTAKEN BY NEW TOWER CODE 
 	    // if (amIHit(creeps[i], creeps[i].posX, creeps[i].posY, creeps[i].size) == true) {
