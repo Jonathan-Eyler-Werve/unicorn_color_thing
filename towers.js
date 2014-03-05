@@ -64,15 +64,20 @@ function explode(i) {
 	
 	if ( (_distance < towers[i].towerRange) && (towers[i].explodeCycle == undefined) ) {		
 		towers[i].image.src = imgBang;
-		creeps[towers[i].targetCreep].image.src = imgDeer;
 		towers[i].explodeCycle = gameLoopCounter;
-		console.log("Explode triggered! Tower: " + i)
-		towers[i].direction = towers[i].direction + 5
+
+		creeps[towers[i].targetCreep].image.src = imgDeer;
+		creeps[towers[i].targetCreep].hitPoints = creeps[towers[i].targetCreep].hitPoints - 10;
+		
+		// console.log("Explode triggered! Tower: " + i)
+		// towers[i].direction = towers[i].direction + 5
 	};
 
-	if ( towers[i].explodeCycle + 10 < gameLoopCounter )  {		
+	if ( towers[i].explodeCycle < gameLoopCounter - 5)  {		
 		towers[i] = undefined;
-		console.log("Explode ended! Tower: " + i)
+		// towers[i].image.src = imgBang;
+		// towers[i].image.src = imgKaleidoscope;
+		// console.log("Explode ended! Tower: " + i)
 	};
 
 };
@@ -159,6 +164,9 @@ function aimTower(x, y, _target) {
 
 
 var towers = [];
+
+
+
 
 // DRIVER CODE FOR DEV
 
