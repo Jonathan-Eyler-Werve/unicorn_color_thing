@@ -122,8 +122,8 @@ creeps.push(my_creep)
 // creeps.push(my_creep2)
 
 
-var my_other_creep = new creep(150,150,180,10);
-creeps.push(my_other_creep)
+// var my_other_creep = new creep(150,150,180,10);
+// creeps.push(my_other_creep)
 
 // console.log(my_creep);
 // console.log(creeps);
