@@ -15,3 +15,4 @@ var imgBang = 'images/icon_2348.svg'; // Explosion by Renee Ramsey-Passmore from
 var imgKaleidoscope = 'images/icon_7139.svg'; // Kaleidoscope by Márcio Duarte from the Noun Project
 var imgTruckKaboom = 'images/icon_3243.svg'; // Armored Truck designed by Luis Prado from the Noun Project
 var imgBullet = 'images/icon_30254.svg'; // Bullet designed by Broquil broquil from the Noun Project
+var imgUnicorn = 'images/icon_29749.svg'; // Unicorn designed by caba kosmotesto from the Noun Project

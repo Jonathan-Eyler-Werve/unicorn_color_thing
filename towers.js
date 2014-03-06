@@ -78,9 +78,7 @@ function updateTowers(){
 function createTower(){
 	if (gameLoopCounter % 100 == 1){
 		console.log("createTower if!")
-		var _tower = new tower(250,250);
-		console.log(_tower)
-		towers.push(_tower);
+		towers.push(new tower(250,250));
 	};
 };
 
@@ -97,7 +95,7 @@ function explode(i) {
 		towers[i].image.src = imgBang;
 		towers[i].explodeCycle = gameLoopCounter;
 
-		creeps[towers[i].targetCreep].image.src = imgDeer;
+		creeps[towers[i].targetCreep].image.src = imgUnicorn;
 		creeps[towers[i].targetCreep].hitPoints = creeps[towers[i].targetCreep].hitPoints - 10;
 		
 		// console.log("Explode triggered! Tower: " + i)

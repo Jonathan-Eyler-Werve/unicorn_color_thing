@@ -15,7 +15,7 @@ function creep(posX,posY,direction,hitPoints){
 	this.randomLong = 5;
 	this.deadCycle = undefined;
 
-	this.drawCreep=drawCreep;
+	this.drawCreep = drawCreep;
 	function drawCreep(ctx){
 		ctx.save();
 	  ctx.translate(this.posX, this.posY);
@@ -43,6 +43,11 @@ function drawAllCreeps(ctx){
 
 function updateCreeps(){
 
+	if (gameLoopCounter % 105 == 1) {
+
+		creeps.push(new creep(200,200,180,10))
+	};
+
 	for (var i = 0; i < creeps.length; i++) {
     if (creeps[i] != undefined) {
 
@@ -63,7 +68,7 @@ function updateCreeps(){
 
 	    	deathRattle(creeps[i].posX, creeps[i].posY, i);
 
-	    	if (creeps[i].deadCycle < (gameLoopCounter - 50)) {
+	    	if (creeps[i].deadCycle < (gameLoopCounter - 500)) {
 	    		creeps[i] = undefined; 
 	    	};
 
@@ -114,6 +119,13 @@ function updateRandomFactors(collection){
 
 
 // DRIVER CODE FOR DEV
+
+var my_creep = new creep(200,200,180,10);
+var my_creep2 = new creep(100,500,180,10);
+var my_creep3 = new creep(200,100,180,10);
+creeps.push(my_creep)
+creeps.push(my_creep3)
+creeps.push(my_creep2)
 
 var my_creep = new creep(200,200,180,10);
 var my_creep2 = new creep(100,500,180,10);
