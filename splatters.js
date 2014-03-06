@@ -16,7 +16,7 @@ function splatterSplash(x, y, color, size) {
 
 	var splats = [];
 
-	splatterCircle((x + 10), (y + 10), randomSaturate(color), size);
+	splatterCircle((x + 10), (y + 10), randomAnalogue(color), size);
 };
 
 
@@ -33,13 +33,10 @@ function randomSaturate(color) {
 	return tinycolor.saturate(color, _number).toHexString();
 };
 
-function randomAnalog(color) {
-
-	var _colors = tinycolor.analogous(color, results = 6, slices = 30)
+function randomAnalogue(color) {
+	var _colors = tinycolor.analogous(color, results = 5, slices = 10)
 	var _number = to_i((Math.random() * 6));
-	console.log(_number);
-	console.log(_colors[_number].toHexString());
-	return tinycolor.saturate(color, _number).toHexString();
+	return _colors[_number].toHexString();
 };
 
 function to_i(_value)  {
