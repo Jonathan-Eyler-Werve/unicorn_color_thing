@@ -2,14 +2,20 @@
 // 
 
 function splat(x, y, color, size) {
-	this.x = x;
-	this.y = y;
-	this.color = color;
+	this.xOrigin = x;
+	this.yOrigin = y;
+	this.colorOrigin = color;
+	this.color = randomAnalogue(color);
+	this.sizeOrigin = size;
+	this.bounceDistance = Math.random() * size * 5; 
+	this.bounceDirection = to_rad(Math.random() * 360);
 	this.size = (size * Math.random()); 
+	this.x = this.xOrigin + (this.bounceDistance * Math.sin(this.bounceDirection));
+	this.y = this.yOrigin + (-1 * this.bounceDistance * Math.cos(this.bounceDirection));
+
+	splatterCircle(this.x, this.y, this.color, this.size);
 
 };
-
-
 
 
 function splatterSplash(x, y, color, size) {
