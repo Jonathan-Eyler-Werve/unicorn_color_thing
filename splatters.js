@@ -46,17 +46,10 @@ function randomAnalogue(color) {
 };
 
 function to_i(_value)  {
-  // uses Bitwise operator to convert value to int. Allegedly faster than Math methods.
+  // uses Bitwise operator to convert value to integer. Allegedly faster than Math methods.
   return _value | 0
 };
 
-randomAnalog('green');
-randomAnalog('green');
-randomAnalog('green');
-randomAnalog('green');
-randomAnalog('green');
-randomAnalog('green');
-randomAnalog('green');
 function to_rad(_degrees){
   return _degrees * (Math.PI / 180)
 };
