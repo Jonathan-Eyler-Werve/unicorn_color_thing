@@ -7,9 +7,9 @@ function splat(x, y, color, size) {
 	this.colorOrigin = color;
 	this.color = randomAnalogue(color);
 	this.sizeOrigin = size;
-	this.bounceDistance = Math.random() * size * 5; 
+	this.bounceDistance = Math.random() * size * 3; 
 	this.bounceDirection = to_rad(Math.random() * 360);
-	this.size = (size * Math.random()); 
+	this.size = (size * Math.random() ); 
 	this.x = this.xOrigin + (this.bounceDistance * Math.sin(this.bounceDirection));
 	this.y = this.yOrigin + (-1 * this.bounceDistance * Math.cos(this.bounceDirection));
 
@@ -22,8 +22,12 @@ function splatterSplash(x, y, color, size) {
 
 	var splats = [];
 
-	splatterCircle((x + 10), (y + 10), randomAnalogue(color), size);
+	for (var i=0; i<30; i++ ) { 
+		splats.push(new splat(x, y, color, size)) 
+	}
+
 };
+
 
 
 function splatterCircle(x, y, color, size) {
@@ -40,8 +44,10 @@ function randomSaturate(color) {
 };
 
 function randomAnalogue(color) {
-	var _colors = tinycolor.analogous(color, results = 5, slices = 10)
+	var _colors = tinycolor.analogous(color, results = 6, slices = 10)
+	console.log(_colors);
 	var _number = to_i((Math.random() * 6));
+	console.log(_number);
 	return _colors[_number].toHexString();
 };
 
