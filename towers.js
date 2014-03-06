@@ -37,7 +37,7 @@ function tower(posX,posY){
 	  	drawDot(ctx); 
 	  }
 	  else {
-    	ctx.drawImage(this.image,-50,-50); 
+    	ctx.drawImage(this.image,-50,-50); // SVG 
 	  };
 
 	  ctx.restore();
@@ -95,7 +95,7 @@ function explode(i) {
 		towers[i].image.src = imgBang;
 		towers[i].explodeCycle = gameLoopCounter;
 
-		splatterCircle(i, 'green', 50);
+		splatterCircle(towers[i].posX, towers[i].posY, 'green', 50);
 
 		creeps[towers[i].targetCreep].image.src = imgUnicorn;
 		creeps[towers[i].targetCreep].hitPoints = creeps[towers[i].targetCreep].hitPoints - 10;
