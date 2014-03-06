@@ -1,5 +1,7 @@
 //<!--  Contains functions to create, draw and modify creeps -->
 
+var creeps = [];
+
 function creep(posX,posY,direction,hitPoints){
 	this.posX = posX;
 	this.posY = posY;
@@ -110,7 +112,6 @@ function updateRandomFactors(collection){
 	};
 }
 
-var creeps = [];
 
 // DRIVER CODE FOR DEV
 

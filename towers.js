@@ -1,6 +1,8 @@
 //<!--  Contains functions to create, draw and modify towers -->
 // 
 
+var towers = [];
+
 function tower(posX,posY){
 	this.posX = posX;
 	this.posY = posY;
@@ -20,27 +22,37 @@ function tower(posX,posY){
 	this.randomMedium = 5;
 	this.randomLong = 5;
 	this.targetCreep = 0;
-	this.towerRange = 10; // dynamic or inherited later 
+	this.towerRange = 15; // this could be an arguement
+	this.bornCycle = gameLoopCounter;
 	this.explodeCycle = undefined;
 
-
 	this.drawTower = drawTower;
+
 	function drawTower(ctx){
 		ctx.save();
 	  ctx.translate(this.posX, this.posY);
 	  ctx.rotate(this.direction);
 
-	  ctx.beginPath();
-	  ctx.lineWidth = 5
-	  ctx.moveTo(0,0);
-	  ctx.lineTo(0, 5);
-	  ctx.stroke();
+	  if (this.explodeCycle == undefined){
+	  	drawDot(ctx); // canvas native
+	  }
+	  else {
+    	ctx.drawImage(this.image,-50,-50); // SVG method
+	  };
 
-		// ctx.drawImage(this.image,-50,-50);
 	  ctx.restore();
 	};
 
 };
+
+function drawDot(ctx){ // Shorthand for a square dot on canvas
+	ctx.beginPath();
+  ctx.lineWidth = 5
+  ctx.moveTo(0,0);
+  ctx.lineTo(0, 5);
+  ctx.stroke();
+};
+
 
 function drawAllTowers(ctx){
 	for (var i = 0; i < towers.length; i++) {
@@ -51,6 +63,7 @@ function drawAllTowers(ctx){
 };
 
 function updateTowers(){
+	createTower();
 	for (var i = 0; i < towers.length; i++) {
 		if (towers[i] != undefined) {
 			towers[i].targetCreep = findClosestTarget(i);
@@ -59,13 +72,15 @@ function updateTowers(){
 			explode(i);
 		};
 
-		// if (inRange(i, towers[i].targetCreep)) {
-		// 	towers[i].image.src = imgKaboom;
-		// }
-		// else {
-		// 	towers[i].image.src = imgRoundArrow;
-		// };
+	};
+};
 
+function createTower(){
+	if (gameLoopCounter % 100 == 1){
+		console.log("createTower if!")
+		var _tower = new tower(250,250);
+		console.log(_tower)
+		towers.push(_tower);
 	};
 };
 
@@ -88,6 +103,8 @@ function explode(i) {
 		// console.log("Explode triggered! Tower: " + i)
 		// towers[i].direction = towers[i].direction + 5
 	};
+
+	// if ( towers[i].bornCycle + 100 == ){};
 
 	if ( towers[i].explodeCycle < gameLoopCounter - 5)  {		
 		towers[i] = undefined;
@@ -175,23 +192,20 @@ function aimTower(i) {
   }; 
 };
 
-var towers = [];
-
 
 // DRIVER CODE FOR DEV
 
 
-var mah_tower3 = new tower(200,500);
-towers.push(mah_tower3)
 
-var mah_tower2 = new tower(300,200);
-towers.push(mah_tower2)
 
-var mah_tower = new tower(100,100);
-towers.push(mah_tower)
+// var mah_tower2 = new tower(300,200);
+// towers.push(mah_tower2)
 
-var my_tower = new tower(100,300);
-towers.push(my_tower)
+// var mah_tower = new tower(100,100);
+// towers.push(mah_tower)
 
-var my_other_tower = new tower(500,300);
-towers.push(my_other_tower)
+// var my_tower = new tower(100,300);
+// towers.push(my_tower)
+
+// var my_other_tower = new tower(500,300);
+// towers.push(my_other_tower)
