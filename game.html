@@ -23,18 +23,13 @@
     var canvasEdgeX = 1000; // sync this with HTML below
     var canvasEdgeY = 800; // sync this with HTML below
     var killCycle = 1000 // for debugging, game loop shuts off after number of cycles
-   
-    
-
 
     $( document ).ready(function() {
 
       canvas = document.getElementById("canvas");
       overlay = document.getElementById("overlay");
-
       ctx = canvas.getContext("2d");
       overlayCtx = overlay.getContext("2d");
-
       loop();
       
     });
@@ -133,18 +128,12 @@
 
   <script>
     // tests! 
-
-    // pitch 0 = straight up; clockwise 90, 180, 270; modulo 360
-
     console.log("tests working = " + (1 == 1));
     console.log("Math.sin(0) = " + (Math.sin(0) == 0));
     console.log("Math.sin(to_rad(90)) = 1 " + (Math.sin(to_rad(90)) == 1));
     console.log("Math.sin(to_rad(270)) = -1 " + (Math.sin(to_rad(270)) == -1));  
     console.log("Degrees to radians = " + (to_rad(180) == Math.PI));
-
   </script>
-
-
 
     <style type="text/css">
       canvas { 
@@ -155,24 +144,12 @@
         z-index: 0;
         position: absolute;
       }
-/*      #stats {
-        margin: 50px;
-        position: absolute;
-        z-index: 100;
-        color: #00FF00;
-        font-size: 20px;
-        font-family: helvetica, arial, sans-serif;
-      }*/
+
     </style>
  
   </head>
  
   <body>
-<!--     <div id="stats">
-      <div class="stats fuel">Fuel: 000000</div>
-      <div class="stats altitude">Altitude: 000000</div>
-      <div class="stats decent">Decent rate: 000000</div>
-    </div>  --> 
 
     <canvas id="overlay" width="1000" height="800"></canvas>
     <canvas id="canvas" width="1000" height="800"></canvas>
