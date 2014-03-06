@@ -51,3 +51,6 @@ randomAnalog('green');
 randomAnalog('green');
 randomAnalog('green');
 randomAnalog('green');
+function to_rad(_degrees){
+  return _degrees * (Math.PI / 180)
+};
