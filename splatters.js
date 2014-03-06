@@ -13,4 +13,10 @@ function splatterCircle(x, y, color, size) {
   overlayCtx.fillStyle = color;
   overlayCtx.fill();
 
+function randomSaturate(color) {
+	var _number = (Math.random() * 100) - 50;
+	return tinycolor.saturate(color, _number).toHexString();
+};
+
+
 };
