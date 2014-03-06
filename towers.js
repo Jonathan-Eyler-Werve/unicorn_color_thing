@@ -95,7 +95,7 @@ function explode(i) {
 		towers[i].image.src = imgBang;
 		towers[i].explodeCycle = gameLoopCounter;
 
-		splatterCircle(towers[i].posX, towers[i].posY, 'green', 50);
+		splatterSplash(towers[i].posX, towers[i].posY, 'green', 50);
 
 		creeps[towers[i].targetCreep].image.src = imgUnicorn;
 		creeps[towers[i].targetCreep].hitPoints = creeps[towers[i].targetCreep].hitPoints - 10;
