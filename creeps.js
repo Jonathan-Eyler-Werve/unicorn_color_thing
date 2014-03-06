@@ -43,11 +43,6 @@ function drawAllCreeps(ctx){
 
 function updateCreeps(){
 
-	if (gameLoopCounter % 105 == 1) {
-
-		creeps.push(new creep(200,200,180,10))
-	};
-
 	for (var i = 0; i < creeps.length; i++) {
     if (creeps[i] != undefined) {
 

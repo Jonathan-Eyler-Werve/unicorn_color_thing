@@ -5,17 +5,16 @@
     <title>Towers of JS</title>
 
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script> -->
-  <!-- // <script src="library/jquery-2.1.0.js" type="text/javascript"></script> -->
+  <script src="library/jquery-2.1.0.js" type="text/javascript"></script>
   <!-- // <script src="library/snap.svg.js" type="text/javascript"></script> -->
   <script src="library/imagePath.js" type="text/javascript"></script>
   <script src="creeps.js" type="text/javascript"></script>
   <script src="towers.js" type="text/javascript"></script>
+  <script src="splatters.js" type="text/javascript"></script>
 
 
 
   <script type="application/javascript">
-    // var thing = new Image();
-    creep = new Image();
 
     var dead = false;
     var gameLoopCounter = 0;
@@ -24,34 +23,23 @@
     var canvasEdgeX = 1000; // sync this with HTML below
     var canvasEdgeY = 800; // sync this with HTML below
     var killCycle = 1000 // for debugging, game loop shuts off after number of cycles
+   
+    
 
 
+    $( document ).ready(function() {
 
+      canvas = document.getElementById("canvas");
+      overlay = document.getElementById("overlay");
 
-    // $( document ).ready(function() {
-    //   // init stuff
-    //   // creep.src = 'images/icon_27452.svg';
+      ctx = canvas.getContext("2d");
+      overlayCtx = overlay.getContext("2d");
 
-    //   // key listeners 
-    //   $( document ).keydown(function(event) {
-    //     event.preventDefault();
+      loop();
+      
+    });
 
-    //     // if ( event.which == 51) { // means 3!
-    //     //   
-    //     // };
-
-    //   });
-
-    //   $( document ).keyup(function(event) {
-    //     event.preventDefault();
-
-    //     // if ( event.which == 190 || event.which == 188) { // > or <
-    //     //   changePitch = 0;
-    //     // };
-    //   });
-    // });
-
-    function loop(){
+    function loop(){  
       setInterval(function(){
         if (gameLoopCounter > killCycle){
           dead = true;
@@ -79,12 +67,9 @@
       },cycleTime);
     };
 
-
     function draw(){
-      
-      var canvas = document.getElementById("canvas");
+    
       if (canvas.getContext) {
-        var ctx = canvas.getContext("2d");
         ctx.clearRect (0, 0, canvasEdgeX, canvasEdgeY)
         ctx.fillStyle = "rgba(0, 255, 0, 1)";
         
@@ -164,30 +149,34 @@
     <style type="text/css">
       canvas { 
         border: 1px solid green; 
-        background-color: #ddd;
+        background: none;
         /*background-image: url('nebula.jpg');*/
         background-size: 1586px 784px;
         z-index: 0;
+        position: absolute;
       }
-      #stats {
+/*      #stats {
         margin: 50px;
         position: absolute;
         z-index: 100;
         color: #00FF00;
         font-size: 20px;
         font-family: helvetica, arial, sans-serif;
-      }
+      }*/
     </style>
  
   </head>
  
-  <body onload="loop();">
+  <body>
 <!--     <div id="stats">
       <div class="stats fuel">Fuel: 000000</div>
       <div class="stats altitude">Altitude: 000000</div>
       <div class="stats decent">Decent rate: 000000</div>
     </div>  --> 
     <canvas id="canvas" width="1000" height="800"></canvas>
+    <canvas id="overlay" width="1000" height="800"></canvas>
+
+
     <!-- Helper text here --> 
   </body>
 
