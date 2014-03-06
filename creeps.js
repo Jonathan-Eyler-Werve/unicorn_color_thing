@@ -49,12 +49,7 @@ function updateCreeps(){
 	    creeps[i].direction = creeps[i].direction + ((creeps[i].randomMedium - 5) * .3);
 	    creeps[i].posX = creeps[i].posX + ((creeps[i].randomShort - 5) * .5);
 	    creeps[i].posY = creeps[i].posY + ((creeps[i].randomMedium - 5) * .5);
-	    
-	    // OVERTAKEN BY NEW TOWER CODE 
-	    // if (amIHit(creeps[i], creeps[i].posX, creeps[i].posY, creeps[i].size) == true) {
-	    // 	creeps[i].hitPoints = creeps[i].hitPoints - randomShort; 	
-	    // };
-	    
+
 	    if (creeps[i].hitPoints < 1) {
 
 	    	if (creeps[i].deadCycle == undefined) { 
@@ -66,11 +61,9 @@ function updateCreeps(){
 	    	if (creeps[i].deadCycle < (gameLoopCounter - 500)) {
 	    		creeps[i] = undefined; 
 	    	};
-
 	    };
 	  };  
 	};
-
 };
 
 
@@ -128,11 +121,3 @@ var my_creep3 = new creep(200,100,180,10);
 creeps.push(my_creep)
 creeps.push(my_creep3)
 creeps.push(my_creep2)
-
-
-// var my_other_creep = new creep(150,150,180,10);
-// creeps.push(my_other_creep)
-
-// console.log(my_creep);
-// console.log(creeps);
-// console.log(creeps[0].direction)
