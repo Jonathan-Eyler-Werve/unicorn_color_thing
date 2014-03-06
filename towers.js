@@ -34,10 +34,10 @@ function tower(posX,posY){
 	  ctx.rotate(this.direction);
 
 	  if (this.explodeCycle == undefined){
-	  	drawDot(ctx); // canvas native
+	  	drawDot(ctx); 
 	  }
 	  else {
-    	ctx.drawImage(this.image,-50,-50); // SVG 
+    	ctx.drawImage(this.image,-50,-50); 
 	  };
 
 	  ctx.restore();
@@ -157,12 +157,8 @@ function findClosestTarget(towerIndex) { // finds nearest creep
 	return index 	
 };
 
-// FIND DIRECTION OF CREEP. 
-
-// AM I IN RANGE? 
 
 function getDistance(towerIndex, creepIndex){ // FIND DISTANCE FROM TOWER TO CREEP
-	// if ((towers[towerIndex] == undefined) || (creeps[creepIndex] == undefined)) {
 
 	if (towers[towerIndex] == undefined) {
 		console.log("getDistance aborted early due to undefined tower Object")
@@ -191,21 +187,3 @@ function aimTower(i) {
 	 	return _direction
   }; 
 };
-
-
-// DRIVER CODE FOR DEV
-
-
-
-
-// var mah_tower2 = new tower(300,200);
-// towers.push(mah_tower2)
-
-// var mah_tower = new tower(100,100);
-// towers.push(mah_tower)
-
-// var my_tower = new tower(100,300);
-// towers.push(my_tower)
-
-// var my_other_tower = new tower(500,300);
-// towers.push(my_other_tower)
