@@ -21,9 +21,10 @@
     var gameLoopCounter = 0;
     var frameRate = 30; // frames per second
     var cycleTime = (1500 / frameRate);
-    var canvasEdgeX = 1000; // sync this with HTML below
+    var canvasEdgeX = 1400; // sync this with HTML below
     var canvasEdgeY = 800; // sync this with HTML below
-    var killCycle = 1000 // for debugging, game loop shuts off after number of cycles
+    var killCycle = 10000; // for debugging, game loop shuts off after number of cycles
+    var seedColor = '#99ff33';
 
     $( document ).ready(function() {
 
@@ -31,6 +32,7 @@
       overlay = document.getElementById("overlay");
       ctx = canvas.getContext("2d");
       overlayCtx = overlay.getContext("2d");
+      wizard();
       loop();
       
     });
@@ -57,7 +59,12 @@
           updateRandomFactors(towers);
           updateCreeps();
           updateTowers();
-          draw();   
+          draw();  
+
+          if (gameLoopCounter % 500 == 1) { 
+            mutateSeedColor();
+            console.log("mutating colors!")
+          };
           // 
         };
       },cycleTime);
@@ -77,6 +84,14 @@
         window.alert("You're too good looking to use a browser this old.");
       }  
     }
+
+    function mutateSeedColor() {
+      var colors = ['red', 'pink', 'blue', '00ff33', '009900', 'cc0000', '000066'];
+      var number = to_i(Math.random() * colors.length); 
+      console.log(number);
+      console.log(colors[number]);
+      seedColor = colors[number];
+    };
 
     function updateRandomFactors(collection){
 
@@ -124,6 +139,8 @@
       return _rad / (Math.PI / 180)
     };
 
+
+
   </script>
 
 
@@ -152,8 +169,8 @@
  
   <body>
 
-    <canvas id="overlay" width="1000" height="800"></canvas>
-    <canvas id="canvas" width="1000" height="800"></canvas>
+    <canvas id="overlay" width="1400" height="800"></canvas>
+    <canvas id="canvas" width="1400" height="800"></canvas>
 
     <!-- Helper text here --> 
   </body>

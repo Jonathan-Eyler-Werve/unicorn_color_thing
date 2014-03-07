@@ -3,6 +3,24 @@
 
 var towers = [];
 
+function wizard() {
+
+		var gandalf = new Image();
+		gandalf.src = imgTruckKaboom; 
+		console.log("wizard running");
+		console.log(gandalf);
+		overlayCtx.save();
+	  overlayCtx.translate(700, 700);
+
+		overlayCtx.beginPath();
+	  overlayCtx.arc(0, 0, 20, 0, 2 * Math.PI, false);
+	  overlayCtx.fillStyle = '#999999';
+	  overlayCtx.fill();
+
+    // overlayCtx.drawImage(gandalf,-50,-50); 
+	  overlayCtx.restore();
+	};   
+
 function tower(posX,posY){
 	this.posX = posX;
 	this.posY = posY;
@@ -11,8 +29,8 @@ function tower(posX,posY){
 	this.thrustPolar = 0;
 	this.thrustX = 0;
 	this.thrustY = 0;
-	this.inertiaX = 0;
-	this.inertiaY = 0;	
+	this.inertiaX = 20;
+	this.inertiaY = -20;	
 	this.size = 10;
 	this.image = new Image();
 	this.image.src = imgRoundArrow;
@@ -22,7 +40,7 @@ function tower(posX,posY){
 	this.randomMedium = 5;
 	this.randomLong = 5;
 	this.targetCreep = 0;
-	this.towerRange = 15; // this could be an arguement
+	this.towerRange = 30; // this could be an arguement
 	this.bornCycle = gameLoopCounter;
 	this.explodeCycle = undefined;
 
@@ -63,7 +81,9 @@ function drawAllTowers(ctx){
 };
 
 function updateTowers(){
-	createTower();
+	createTower(0,0);
+	createTower(700,700);
+
 	for (var i = 0; i < towers.length; i++) {
 		if (towers[i] != undefined) {
 			towers[i].targetCreep = findClosestTarget(i);
@@ -75,17 +95,20 @@ function updateTowers(){
 	};
 };
 
-function createTower(){
-	if (gameLoopCounter % 100 == 1){
-		console.log("createTower if!")
-		towers.push(new tower(700,700));
-	};
+function createTower(x,y){
+	if (gameLoopCounter % 80 == 1){
+		console.log("create Tower!")
+		towers.push(new tower(x,y));
+	} 	
 };
 
 
 function explode(i) {
+
+	var splashSize = (towers[i].inertiaX + towers[i].inertiaY) * .2 + 20 
+	//var splashSize = (Math.random() * 20 + 10)
+
 	if (creeps[towers[i].targetCreep] == undefined) {
-		console.log("explode returns early due to undefined targetCreep")
 		return
 	};
 
@@ -94,19 +117,15 @@ function explode(i) {
 	if ( (_distance < towers[i].towerRange) && (towers[i].explodeCycle == undefined) ) {		
 		towers[i].image.src = imgBang;
 		towers[i].explodeCycle = gameLoopCounter;
-
-		splatterSplash(towers[i].posX, towers[i].posY, '00ff33', 30);
-
+		splatterSplash(towers[i].posX, towers[i].posY, seedColor, splashSize);
 		creeps[towers[i].targetCreep].image.src = imgUnicorn;
 		creeps[towers[i].targetCreep].hitPoints = creeps[towers[i].targetCreep].hitPoints - 10;
-		
 		// console.log("Explode triggered! Tower: " + i)
 		// towers[i].direction = towers[i].direction + 5
 	};
 
 	// if ( towers[i].bornCycle + 100 == ){};
-
-	if ( towers[i].explodeCycle < gameLoopCounter - 5)  {		
+	if ( towers[i].explodeCycle < gameLoopCounter - 20)  {		
 		towers[i] = undefined;
 		// towers[i].image.src = imgBang;
 		// towers[i].image.src = imgKaleidoscope;
@@ -127,7 +146,7 @@ function updateThrustY(i) {
 };
 
 function chaseTargets(i){
-	towers[i].thrustPolar = 2; // hardcoded for now
+	towers[i].thrustPolar = 3; // hardcoded for now
 
 	// console.log("tower " + i + ", thrustX = " + updateThrustX(i));
 

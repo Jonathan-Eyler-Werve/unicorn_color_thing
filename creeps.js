@@ -43,6 +43,8 @@ function drawAllCreeps(ctx){
 
 function updateCreeps(){
 
+	createCreep(400,400);
+
 	for (var i = 0; i < creeps.length; i++) {
     if (creeps[i] != undefined) {
 
@@ -64,6 +66,14 @@ function updateCreeps(){
 	    };
 	  };  
 	};
+};
+
+
+function createCreep(x,y){
+	if (gameLoopCounter % 100 == 1){
+		console.log("create Creep!")
+		creeps.push(new creep(x,y,0,20));
+	}
 };
 
 
@@ -108,16 +118,16 @@ function updateRandomFactors(collection){
 
 // DRIVER CODE FOR DEV
 
-var my_creep = new creep(200,200,180,10);
-var my_creep2 = new creep(100,500,180,10);
-var my_creep3 = new creep(200,100,180,10);
-creeps.push(my_creep)
-creeps.push(my_creep3)
-creeps.push(my_creep2)
+var my_creep = new creep(220,220,0,10);
+var my_creep2 = new creep(300,500,0,10);
+var my_creep3 = new creep(400,300,0,10);
+creeps.push(my_creep);
+creeps.push(my_creep3);
+creeps.push(my_creep2);
 
-var my_creep = new creep(200,200,180,10);
-var my_creep2 = new creep(100,500,180,10);
-var my_creep3 = new creep(200,100,180,10);
-creeps.push(my_creep)
-creeps.push(my_creep3)
-creeps.push(my_creep2)
+var my_creep = new creep(200,200,0,10);
+var my_creep2 = new creep(400,500,0,10);
+var my_creep3 = new creep(200,500,0,10);
+creeps.push(my_creep);
+creeps.push(my_creep3);
+creeps.push(my_creep2);
