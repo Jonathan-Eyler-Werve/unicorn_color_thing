@@ -37,7 +37,7 @@ function splatterCircle(x, y, color, size) {
 	overlayCtx.beginPath();
   overlayCtx.arc(x, y, size, 0, 2 * Math.PI, false);
   overlayCtx.fillStyle = color;
-  overlayCtx.globalAlpha = 0.15;
+  overlayCtx.globalAlpha = 0.2;
   overlayCtx.fill();
 };
 

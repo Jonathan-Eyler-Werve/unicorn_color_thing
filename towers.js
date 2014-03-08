@@ -12,8 +12,8 @@ function tower(posX,posY){
 	this.thrustPolar = 0;
 	this.thrustX = 0;
 	this.thrustY = 0;
-	this.inertiaX = 20;
-	this.inertiaY = -20;	
+	this.inertiaX = 10;
+	this.inertiaY = -10;	
 	this.size = 10;
 	this.image = new Image();
 	this.image.src = imgRoundArrow;
@@ -153,7 +153,7 @@ function updateThrustY(i) {
 };
 
 function chaseTargets(i){
-	towers[i].thrustPolar = 2; // hardcoded for now
+	towers[i].thrustPolar = 5; // hardcoded for now
 
 	// console.log("tower " + i + ", thrustX = " + updateThrustX(i));
 
