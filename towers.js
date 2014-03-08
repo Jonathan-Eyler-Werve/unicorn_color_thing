@@ -23,7 +23,7 @@ function tower(posX,posY){
 	this.randomMedium = 5;
 	this.randomLong = 5;
 	this.targetCreep = 0;
-	this.towerRange = 30; // this could be an arguement
+	this.towerRange = 20; // this could be an arguement
 	this.bornCycle = gameLoopCounter;
 	this.explodeCycle = undefined;
 
@@ -35,7 +35,7 @@ function tower(posX,posY){
 	  ctx.rotate(this.direction);
 
 	  if (this.explodeCycle == undefined){
-	  	ctx.drawImage(this.image,-10,-10, 20, 20);
+	  	ctx.drawImage(this.image,-5,-5, 10, 10);
 	  	// drawDot(ctx); 
 	  }
 	  else {
@@ -106,7 +106,7 @@ function updateTowers(){
 };
 
 function createTower(x,y){
-	if (gameLoopCounter % 80 == 1){
+	if (gameLoopCounter % 70 == 1){
 		console.log("create Tower!")
 		towers.push(new tower(x,y));
 	} 	
@@ -115,7 +115,7 @@ function createTower(x,y){
 
 function explode(i) {
 
-	var splashSize = (towers[i].inertiaX + towers[i].inertiaY) * .2 + 20 
+	var splashSize = (towers[i].inertiaX + towers[i].inertiaY) * .3 + 20 
 	//var splashSize = (Math.random() * 20 + 10)
 
 	if (creeps[towers[i].targetCreep] == undefined) {

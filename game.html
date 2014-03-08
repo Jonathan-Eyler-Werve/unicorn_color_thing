@@ -30,12 +30,26 @@
 
       canvas = document.getElementById("canvas");
       overlay = document.getElementById("overlay");
+      setSizes();
       ctx = canvas.getContext("2d");
       overlayCtx = overlay.getContext("2d");
       wizard();
       loop();
       
     });
+
+    $( window ).resize(function() {
+      setSizes();
+    });
+
+    function setSizes(){
+      canvasEdgeX = $(window).width(); 
+      canvasEdgeY = $(window).height(); 
+      canvas.width = canvasEdgeX;
+      canvas.height = canvasEdgeY;
+      overlay.width = canvasEdgeX;
+      overlay.height = canvasEdgeY;
+    };
 
     function loop(){  
       setInterval(function(){
@@ -86,7 +100,7 @@
     }
 
     function mutateSeedColor() {
-      var colors = ['red', 'pink', 'blue', '00ff33', '00FFCC', 'cc0000', '000066', '330000'];
+      var colors = ['red', 'pink', 'blue', '00ff33', '00FFCC', 'ff00ff', 'yellow', 'ff3300', 'purple', 'indigo'];
       var number = to_i(Math.random() * colors.length); 
       console.log(number);
       console.log(colors[number]);
@@ -154,13 +168,16 @@
   </script>
 
     <style type="text/css">
+      body {
+        padding: 0;
+        margin: 0;
+      }
+
       canvas { 
         border: 1px solid green; 
         background: none;
-        /*background-image: url('nebula.jpg');*/
-        background-size: 1586px 784px;
         z-index: 0;
-        position: absolute;
+        position: fixed;
       }
 
     </style>
