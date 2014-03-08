@@ -26,13 +26,13 @@ function creep(posX,posY,direction,hitPoints){
 	};
 };
 
-function drawCreep(ctx){
-	ctx.save();
-  ctx.translate(this.posX, this.posY);
-  ctx.rotate(to_rad(this.direction));
-	ctx.drawImage(this.image,-25,-25);
-  ctx.restore();
-};
+// function drawCreep(ctx){
+// 	ctx.save();
+//   ctx.translate(this.posX, this.posY);
+//   ctx.rotate(to_rad(this.direction));
+// 	ctx.drawImage(this.image,-25,-25);
+//   ctx.restore();
+// };
 
 function drawAllCreeps(ctx){
 	for (var i = 0; i < creeps.length; i++) {
