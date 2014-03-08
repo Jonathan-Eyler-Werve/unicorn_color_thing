@@ -9,18 +9,19 @@ function creep(posX,posY,direction,hitPoints){
 	this.hitPoints = hitPoints;
 	this.size = 10;
 	this.image = new Image();
-	this.image.src = imgRudolf;
+	this.image.src = imgIndifferentSmily;
 	this.randomShort = 5;
 	this.randomMedium = 5;
 	this.randomLong = 5;
 	this.deadCycle = undefined;
+	this.drawSize = 50;
 
 	this.drawCreep = drawCreep;
 	function drawCreep(ctx){
 		ctx.save();
 	  ctx.translate(this.posX, this.posY);
 	  ctx.rotate(to_rad(this.direction));
-		ctx.drawImage(this.image,-50,-50);
+		ctx.drawImage(this.image,(this.drawSize/-2),(this.drawSize/-2), this.drawSize, this.drawSize);
 	  ctx.restore();
 	};
 };
@@ -48,9 +49,9 @@ function updateCreeps(){
 	for (var i = 0; i < creeps.length; i++) {
     if (creeps[i] != undefined) {
 
-	    creeps[i].direction = creeps[i].direction + ((creeps[i].randomMedium - 5) * .3);
-	    creeps[i].posX = creeps[i].posX + ((creeps[i].randomShort - 5) * .5);
-	    creeps[i].posY = creeps[i].posY + ((creeps[i].randomMedium - 5) * .5);
+	    creeps[i].direction = creeps[i].direction + ((creeps[i].randomMedium - 5) * .1);
+	    creeps[i].posX = creeps[i].posX + ((creeps[i].randomShort - 5) * .2);
+	    creeps[i].posY = creeps[i].posY + ((creeps[i].randomMedium - 5) * .2);
 
 	    if (creeps[i].hitPoints < 1) {
 
@@ -60,7 +61,7 @@ function updateCreeps(){
 
 	    	deathRattle(creeps[i].posX, creeps[i].posY, i);
 
-	    	if (creeps[i].deadCycle < (gameLoopCounter - 500)) {
+	    	if (creeps[i].deadCycle < (gameLoopCounter - 400)) {
 	    		creeps[i] = undefined; 
 	    	};
 	    };
@@ -118,16 +119,16 @@ function updateRandomFactors(collection){
 
 // DRIVER CODE FOR DEV
 
-var my_creep = new creep(220,220,0,10);
-var my_creep2 = new creep(300,500,0,10);
-var my_creep3 = new creep(400,300,0,10);
-creeps.push(my_creep);
-creeps.push(my_creep3);
-creeps.push(my_creep2);
+// var my_creep = new creep(220,220,0,10);
+// var my_creep2 = new creep(300,500,0,10);
+// var my_creep3 = new creep(400,300,0,10);
+// creeps.push(my_creep);
+// creeps.push(my_creep3);
+// creeps.push(my_creep2);
 
-var my_creep = new creep(200,200,0,10);
-var my_creep2 = new creep(400,500,0,10);
-var my_creep3 = new creep(200,500,0,10);
-creeps.push(my_creep);
-creeps.push(my_creep3);
-creeps.push(my_creep2);
+// var my_creep = new creep(200,200,0,10);
+// var my_creep2 = new creep(400,500,0,10);
+// var my_creep3 = new creep(200,500,0,10);
+// creeps.push(my_creep);
+// creeps.push(my_creep3);
+// creeps.push(my_creep2);

@@ -19,11 +19,11 @@
 
     var dead = false;
     var gameLoopCounter = 0;
-    var frameRate = 30; // frames per second
+    var frameRate = 40; // frames per second
     var cycleTime = (1500 / frameRate);
     var canvasEdgeX = 1400; // sync this with HTML below
     var canvasEdgeY = 800; // sync this with HTML below
-    var killCycle = 10000; // for debugging, game loop shuts off after number of cycles
+    var killCycle = 10000000; // for debugging, game loop shuts off after number of cycles
     var seedColor = '#99ff33';
 
     $( document ).ready(function() {
@@ -39,9 +39,9 @@
 
     function loop(){  
       setInterval(function(){
-        if (gameLoopCounter > killCycle){
-          dead = true;
-        };
+        // if (gameLoopCounter > killCycle){
+        //   dead = true;
+        // };
 
 
         if (dead == false) {
@@ -86,7 +86,7 @@
     }
 
     function mutateSeedColor() {
-      var colors = ['red', 'pink', 'blue', '00ff33', '009900', 'cc0000', '000066'];
+      var colors = ['red', 'pink', 'blue', '00ff33', '00FFCC', 'cc0000', '000066', '330000'];
       var number = to_i(Math.random() * colors.length); 
       console.log(number);
       console.log(colors[number]);

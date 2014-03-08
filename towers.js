@@ -25,6 +25,7 @@ function tower(posX,posY){
 	this.posX = posX;
 	this.posY = posY;
 	this.direction = 0;
+	this.apparentDirection = 0;
 	this.directionSetting = 0;
 	this.thrustPolar = 0;
 	this.thrustX = 0;
@@ -52,7 +53,8 @@ function tower(posX,posY){
 	  ctx.rotate(this.direction);
 
 	  if (this.explodeCycle == undefined){
-	  	drawDot(ctx); 
+	  	ctx.drawImage(this.image,-10,-10, 20, 20);
+	  	// drawDot(ctx); 
 	  }
 	  else {
     	ctx.drawImage(this.image,-50,-50); // SVG 
@@ -88,6 +90,7 @@ function updateTowers(){
 		if (towers[i] != undefined) {
 			towers[i].targetCreep = findClosestTarget(i);
 			towers[i].direction = aimTower(i);
+			towers[i].apparentDirection = pointTowerImage(i);
 			chaseTargets(i);
 			explode(i);
 		};
@@ -119,13 +122,14 @@ function explode(i) {
 		towers[i].explodeCycle = gameLoopCounter;
 		splatterSplash(towers[i].posX, towers[i].posY, seedColor, splashSize);
 		creeps[towers[i].targetCreep].image.src = imgUnicorn;
+		creeps[towers[i].targetCreep].drawSize = 100;
 		creeps[towers[i].targetCreep].hitPoints = creeps[towers[i].targetCreep].hitPoints - 10;
 		// console.log("Explode triggered! Tower: " + i)
 		// towers[i].direction = towers[i].direction + 5
 	};
 
 	// if ( towers[i].bornCycle + 100 == ){};
-	if ( towers[i].explodeCycle < gameLoopCounter - 20)  {		
+	if ( towers[i].explodeCycle < gameLoopCounter - 10)  {		
 		towers[i] = undefined;
 		// towers[i].image.src = imgBang;
 		// towers[i].image.src = imgKaleidoscope;
@@ -146,7 +150,7 @@ function updateThrustY(i) {
 };
 
 function chaseTargets(i){
-	towers[i].thrustPolar = 3; // hardcoded for now
+	towers[i].thrustPolar = 2; // hardcoded for now
 
 	// console.log("tower " + i + ", thrustX = " + updateThrustX(i));
 
@@ -205,4 +209,11 @@ function aimTower(i) {
 	 	var _direction = Math.atan2(_distanceX, _distanceY)
 	 	return _direction
   }; 
+};
+
+function pointTowerImage(i) {
+	if (towers[i] != undefined && creeps[towers[i].targetCreep] != undefined){
+		var _direction = Math.atan2(towers[i].inertiaX, towers[i].inertiaY)
+	return _direction
+	};
 };
