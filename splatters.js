@@ -13,24 +13,16 @@ function splat(x, y, color, size) {
 	this.x = this.xOrigin + (this.bounceDistance * Math.sin(this.bounceDirection) + (Math.random() * 5));
 	this.y = this.yOrigin + (-1 * this.bounceDistance * Math.cos(this.bounceDirection));
 
-
-
 	splatterCircle(this.x, this.y, this.color, this.size);
-
 };
-
 
 function splatterSplash(x, y, color, size) {
 	groupColor = randomAnalogue(color);
 	var splats = [];
-
 	for (var i=0; i<400; i++ ) { 
 		splats.push(new splat(x, y, groupColor, size)) 
 	}
-
 };
-
-
 
 function splatterCircle(x, y, color, size) {
 	// console.log("splatterCircle called");
@@ -48,9 +40,7 @@ function randomSaturate(color) {
 
 function randomAnalogue(color) {
 	var _colors = tinycolor.analogous(color, results = 6, slices = 20)
-	// console.log(_colors);
 	var _number = to_i((Math.random() * 6));
-	// console.log(_number);
 	return _colors[_number].toHexString();
 };
 

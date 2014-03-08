@@ -26,14 +26,6 @@ function creep(posX,posY,direction,hitPoints){
 	};
 };
 
-// function drawCreep(ctx){
-// 	ctx.save();
-//   ctx.translate(this.posX, this.posY);
-//   ctx.rotate(to_rad(this.direction));
-// 	ctx.drawImage(this.image,-25,-25);
-//   ctx.restore();
-// };
-
 function drawAllCreeps(ctx){
 	for (var i = 0; i < creeps.length; i++) {
     if (creeps[i] != undefined) {   
@@ -54,18 +46,15 @@ function updateCreeps(){
 	    creeps[i].posY = creeps[i].posY + ((creeps[i].randomMedium - 5) * .3);
 
 	    if (creeps[i].hitPoints < 1) {
-
 	    	if (creeps[i].deadCycle == undefined) { 
 	    		creeps[i].deadCycle = gameLoopCounter;
 	    	};
-
 	    	deathRattle(creeps[i].posX, creeps[i].posY, i);
-
 	    	if (creeps[i].deadCycle < (gameLoopCounter - 0)) {
 	    		creeps[i] = undefined; 
 	    	};
-
 	    };
+
 	  };  
 	};
 };
@@ -84,8 +73,6 @@ function createCreep(x,y){
 	}
 };
 
-
-
 function amIHit(creep,posX,posY,size){
 	return false; // temporary! 
 };
@@ -94,7 +81,6 @@ function deathRattle(posX, posY, creepIndex){
 	// alert("deathRattle - a creep has died")
 	// console.log("deathRattle called")
 };
-
 
 function updateRandomFactors(collection){
 

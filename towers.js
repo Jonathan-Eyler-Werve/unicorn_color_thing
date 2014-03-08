@@ -28,7 +28,6 @@ function tower(posX,posY){
 	this.explodeCycle = undefined;
 
 	this.drawTower = drawTower;
-
 	function drawTower(ctx){
 		ctx.save();
 	  ctx.translate(this.posX, this.posY);
@@ -36,7 +35,6 @@ function tower(posX,posY){
 
 	  if (this.explodeCycle == undefined){
 	  	ctx.drawImage(this.image,-5,-5, 10, 10);
-	  	// drawDot(ctx); 
 	  }
 	  else {
     	ctx.drawImage(this.image,-50,-50); // SVG 
@@ -44,11 +42,9 @@ function tower(posX,posY){
 
 	  ctx.restore();
 	};
-
 };
 
 function wizard() {
-
 		overlayCtx.save();
 	  overlayCtx.translate(700, 700);
 		overlayCtx.beginPath();
@@ -59,7 +55,6 @@ function wizard() {
 	}; 
 
 function smokeTrail(i) {
-
 		overlayCtx.save();
 	  overlayCtx.translate(towers[i].posX, towers[i].posY);
 		overlayCtx.beginPath();
@@ -70,14 +65,13 @@ function smokeTrail(i) {
 	  overlayCtx.restore();
 	}; 	
 
-function drawDot(ctx){ // Shorthand for a square dot on canvas
+function drawDot(ctx){ // Draws a square dot on canvas
 	ctx.beginPath();
   ctx.lineWidth = 5
   ctx.moveTo(0,0);
   ctx.lineTo(0, 5);
   ctx.stroke();
 };
-
 
 function drawAllTowers(ctx){
 	for (var i = 0; i < towers.length; i++) {
@@ -99,9 +93,7 @@ function updateTowers(){
 			chaseTargets(i);
 			smokeTrail(i);
 			explode(i);
-
 		};
-
 	};
 };
 
@@ -111,7 +103,6 @@ function createTower(x,y){
 		towers.push(new tower(x,y));
 	} 	
 };
-
 
 function explode(i) {
 
@@ -131,16 +122,10 @@ function explode(i) {
 		hitCreep(i);
 	};
 
-	// if ( towers[i].bornCycle + 100 == ){};
 	if ( towers[i].explodeCycle < gameLoopCounter - 10)  {		
 		towers[i] = undefined;
-		// towers[i].image.src = imgBang;
-		// towers[i].image.src = imgKaleidoscope;
-		// console.log("Explode ended! Tower: " + i)
 	};
-
 };
-
 
 function updateThrustX(i) {
 	// console.log("direction " + towers[i].direction)
@@ -154,26 +139,19 @@ function updateThrustY(i) {
 
 function chaseTargets(i){
 	towers[i].thrustPolar = 5; // hardcoded for now
-
 	// console.log("tower " + i + ", thrustX = " + updateThrustX(i));
-
 	towers[i].inertiaX = towers[i].inertiaX + updateThrustX(i);
 	towers[i].inertiaY = towers[i].inertiaY + updateThrustY(i);
-
 	// console.log("tower " + i + ", inertiaX = " + towers[i].inertiaX);
-
 	towers[i].posX += towers[i].inertiaX;
 	towers[i].posY += towers[i].inertiaY;
 }; 
-
 
 function findClosestTarget(towerIndex) { // finds nearest creep 
 	var creepDistance = undefined;
 	for (var i = 0; i < creeps.length; i++) {
 		if (creeps[i] != undefined) {
-
 			var _distance =	getDistance(towerIndex, i)
-
 			if (creepDistance > _distance || creepDistance == undefined) {
 				index = i;
 				creepDistance = _distance; 
@@ -183,9 +161,8 @@ function findClosestTarget(towerIndex) { // finds nearest creep
 	return index 	
 };
 
-
 function getDistance(towerIndex, creepIndex){ // FIND DISTANCE FROM TOWER TO CREEP
-
+	
 	if (towers[towerIndex] == undefined) {
 		console.log("getDistance aborted early due to undefined tower Object")
 		console.log("towerIndex = " + towerIndex)
