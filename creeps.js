@@ -50,8 +50,8 @@ function updateCreeps(){
     if (creeps[i] != undefined) {
 
 	    creeps[i].direction = creeps[i].direction + ((creeps[i].randomMedium - 5) * .1);
-	    creeps[i].posX = creeps[i].posX + ((creeps[i].randomShort - 5) * .2);
-	    creeps[i].posY = creeps[i].posY + ((creeps[i].randomMedium - 5) * .2);
+	    creeps[i].posX = creeps[i].posX + ((creeps[i].randomShort - 5) * .4);
+	    creeps[i].posY = creeps[i].posY + ((creeps[i].randomMedium - 5) * .3);
 
 	    if (creeps[i].hitPoints < 1) {
 
@@ -61,17 +61,24 @@ function updateCreeps(){
 
 	    	deathRattle(creeps[i].posX, creeps[i].posY, i);
 
-	    	if (creeps[i].deadCycle < (gameLoopCounter - 400)) {
+	    	if (creeps[i].deadCycle < (gameLoopCounter - 0)) {
 	    		creeps[i] = undefined; 
 	    	};
+
 	    };
 	  };  
 	};
 };
 
 
+function hitCreep(i){
+	creeps[towers[i].targetCreep].image.src = imgUnicorn;
+	creeps[towers[i].targetCreep].drawSize = 100;
+	creeps[towers[i].targetCreep].hitPoints = creeps[towers[i].targetCreep].hitPoints - 10;
+};
+
 function createCreep(x,y){
-	if (gameLoopCounter % 100 == 1){
+	if (gameLoopCounter % 80 == 1){
 		console.log("create Creep!")
 		creeps.push(new creep(x,y,0,20));
 	}

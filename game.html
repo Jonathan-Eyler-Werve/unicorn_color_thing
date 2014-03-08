@@ -21,8 +21,8 @@
     var gameLoopCounter = 0;
     var frameRate = 40; // frames per second
     var cycleTime = (1500 / frameRate);
-    var canvasEdgeX = 1400; // sync this with HTML below
-    var canvasEdgeY = 800; // sync this with HTML below
+    var canvasEdgeX = $(window).width(); // sync this with HTML below
+    var canvasEdgeY = $(window).height(); // sync this with HTML below
     var killCycle = 10000000; // for debugging, game loop shuts off after number of cycles
     var seedColor = '#99ff33';
 

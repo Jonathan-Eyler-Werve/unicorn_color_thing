@@ -1,25 +1,7 @@
 //<!--  Contains functions to create, draw and modify towers -->
 // 
 
-var towers = [];
-
-function wizard() {
-
-		var gandalf = new Image();
-		gandalf.src = imgTruckKaboom; 
-		console.log("wizard running");
-		console.log(gandalf);
-		overlayCtx.save();
-	  overlayCtx.translate(700, 700);
-
-		overlayCtx.beginPath();
-	  overlayCtx.arc(0, 0, 20, 0, 2 * Math.PI, false);
-	  overlayCtx.fillStyle = '#999999';
-	  overlayCtx.fill();
-
-    // overlayCtx.drawImage(gandalf,-50,-50); 
-	  overlayCtx.restore();
-	};   
+var towers = [];  
 
 function tower(posX,posY){
 	this.posX = posX;
@@ -65,6 +47,29 @@ function tower(posX,posY){
 
 };
 
+function wizard() {
+
+		overlayCtx.save();
+	  overlayCtx.translate(700, 700);
+		overlayCtx.beginPath();
+	  overlayCtx.arc(0, 0, 20, 0, 2 * Math.PI, false);
+	  overlayCtx.fillStyle = '#999999';
+	  overlayCtx.fill();
+	  overlayCtx.restore();
+	}; 
+
+function smokeTrail(i) {
+
+		overlayCtx.save();
+	  overlayCtx.translate(towers[i].posX, towers[i].posY);
+		overlayCtx.beginPath();
+	  overlayCtx.arc(0, 0, 3, 0, 2 * Math.PI, false);
+	  overlayCtx.globalAlpha = 0.3;
+	  overlayCtx.fillStyle = 'yellow';
+	  overlayCtx.fill();
+	  overlayCtx.restore();
+	}; 	
+
 function drawDot(ctx){ // Shorthand for a square dot on canvas
 	ctx.beginPath();
   ctx.lineWidth = 5
@@ -92,7 +97,9 @@ function updateTowers(){
 			towers[i].direction = aimTower(i);
 			towers[i].apparentDirection = pointTowerImage(i);
 			chaseTargets(i);
+			smokeTrail(i);
 			explode(i);
+
 		};
 
 	};
@@ -121,11 +128,7 @@ function explode(i) {
 		towers[i].image.src = imgBang;
 		towers[i].explodeCycle = gameLoopCounter;
 		splatterSplash(towers[i].posX, towers[i].posY, seedColor, splashSize);
-		creeps[towers[i].targetCreep].image.src = imgUnicorn;
-		creeps[towers[i].targetCreep].drawSize = 100;
-		creeps[towers[i].targetCreep].hitPoints = creeps[towers[i].targetCreep].hitPoints - 10;
-		// console.log("Explode triggered! Tower: " + i)
-		// towers[i].direction = towers[i].direction + 5
+		hitCreep(i);
 	};
 
 	// if ( towers[i].bornCycle + 100 == ){};
