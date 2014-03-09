@@ -76,6 +76,7 @@ function hitCreep(i){
 };
 
 function createCreep(x,y){
+	if (gameLoopCounter % 60 == 1){
 		console.log("create Creep!")
 		creeps.push(new creep(x,y,0,20));
 	}
