@@ -36,7 +36,6 @@ function drawAllCreeps(ctx){
 
 function updateCreeps(){
 
-	createCreep(400,400);
 	if (countCollection(creeps) < 11){
 		createCreep(400,400);	
 	};
@@ -48,7 +47,7 @@ function updateCreeps(){
     if (creeps[i] != undefined) {
 
 	    creeps[i].direction = creeps[i].direction + ((creeps[i].randomMedium - 5) * .1);
-	    creeps[i].posX = creeps[i].posX + ((creeps[i].randomShort - 5) * .4);
+	    creeps[i].posX = creeps[i].posX + ((creeps[i].randomShort - 5) * .5);
 	    creeps[i].posY = creeps[i].posY + ((creeps[i].randomMedium - 5) * .3);
 
 	    if (Math.abs(creeps[i].posX - 500) > 1000 || Math.abs(creeps[i].posY - 400)  > 800) {
@@ -77,7 +76,6 @@ function hitCreep(i){
 };
 
 function createCreep(x,y){
-	if (gameLoopCounter % 70 == 1){
 		console.log("create Creep!")
 		creeps.push(new creep(x,y,0,20));
 	}
