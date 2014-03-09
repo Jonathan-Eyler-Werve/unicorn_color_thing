@@ -106,7 +106,7 @@ function createTower(x,y){
 
 function explode(i) {
 
-	var splashSize = (towers[i].inertiaX + towers[i].inertiaY) * .3 + 20 
+	var splashSize = (Math.abs(towers[i].inertiaX) + Math.abs(towers[i].inertiaY)) * .3 + 5 
 	//var splashSize = (Math.random() * 20 + 10)
 
 	if (creeps[towers[i].targetCreep] == undefined) {
