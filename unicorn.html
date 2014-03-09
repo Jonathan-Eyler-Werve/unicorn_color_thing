@@ -124,6 +124,19 @@
       };
     };
 
+
+    function countCollection(collection){
+      var _count = 0;
+      for (var i = 0; i < collection.length; i++) {
+        if (collection[i] != undefined) {
+          _count++; 
+        };  
+      };
+      return _count
+    };
+
+
+
     function to_i(_value)  {
       // uses Bitwise operator to convert value to int. Allegedly faster than Math methods.
       return _value | 0
@@ -146,6 +159,11 @@
     console.log("Math.sin(to_rad(90)) = 1 " + (Math.sin(to_rad(90)) == 1));
     console.log("Math.sin(to_rad(270)) = -1 " + (Math.sin(to_rad(270)) == -1));  
     console.log("Degrees to radians = " + (to_rad(180) == Math.PI));
+    console.log("Creeps = " + countCollection(creeps));
+    console.log("Towers = " + countCollection(towers));
+    var test = [1, 2, 3, undefined, 4]
+    console.log("countColletion : " + (countCollection(test) == 4));
+
   </script>
 
   <style type="text/css">

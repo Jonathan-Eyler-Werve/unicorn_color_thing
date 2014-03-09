@@ -37,6 +37,12 @@ function drawAllCreeps(ctx){
 function updateCreeps(){
 
 	createCreep(400,400);
+	if (countCollection(creeps) < 11){
+		createCreep(400,400);	
+	};
+
+	console.log(countCollection(creeps));
+	
 
 	for (var i = 0; i < creeps.length; i++) {
     if (creeps[i] != undefined) {
@@ -44,6 +50,10 @@ function updateCreeps(){
 	    creeps[i].direction = creeps[i].direction + ((creeps[i].randomMedium - 5) * .1);
 	    creeps[i].posX = creeps[i].posX + ((creeps[i].randomShort - 5) * .4);
 	    creeps[i].posY = creeps[i].posY + ((creeps[i].randomMedium - 5) * .3);
+
+	    if (Math.abs(creeps[i].posX - 500) > 1000 || Math.abs(creeps[i].posY - 400)  > 800) {
+	    	creeps[i].hitPoints = 0;
+	    };	
 
 	    if (creeps[i].hitPoints < 1) {
 	    	if (creeps[i].deadCycle == undefined) { 

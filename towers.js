@@ -82,8 +82,11 @@ function drawAllTowers(ctx){
 };
 
 function updateTowers(){
-	createTower(0,0);
-	createTower(700,700);
+
+	if (countCollection(towers) < 20){ 
+		createTower(0,0);
+		createTower(700,700);
+	};
 
 	for (var i = 0; i < towers.length; i++) {
 		if (towers[i] != undefined) {
