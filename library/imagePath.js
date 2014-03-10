@@ -16,3 +16,4 @@ var imgKaleidoscope = 'images/icon_7139.svg'; // Kaleidoscope by Márcio Duarte 
 var imgTruckKaboom = 'images/icon_3243.svg'; // Armored Truck designed by Luis Prado from the Noun Project
 var imgBullet = 'images/icon_30254.svg'; // Bullet designed by Broquil broquil from the Noun Project
 var imgUnicorn = 'images/icon_29749.svg'; // Unicorn designed by caba kosmotesto from the Noun Project
+var imgGandalf = 'images/icon_36395.svg'; // Galdalf, public domain, via Noun Project 

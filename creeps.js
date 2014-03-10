@@ -9,28 +9,21 @@ function creep(posX,posY,direction,hitPoints){
 	this.hitPoints = hitPoints;
 	this.size = 10;
 	this.image = new Image();
-	this.image.src = imgRudolf;
+	this.image.src = imgIndifferentSmily;
 	this.randomShort = 5;
 	this.randomMedium = 5;
 	this.randomLong = 5;
 	this.deadCycle = undefined;
+	this.drawSize = 50;
 
 	this.drawCreep = drawCreep;
 	function drawCreep(ctx){
 		ctx.save();
 	  ctx.translate(this.posX, this.posY);
 	  ctx.rotate(to_rad(this.direction));
-		ctx.drawImage(this.image,-50,-50);
+		ctx.drawImage(this.image,(this.drawSize/-2),(this.drawSize/-2), this.drawSize, this.drawSize);
 	  ctx.restore();
 	};
-};
-
-function drawCreep(ctx){
-	ctx.save();
-  ctx.translate(this.posX, this.posY);
-  ctx.rotate(to_rad(this.direction));
-	ctx.drawImage(this.image,-25,-25);
-  ctx.restore();
 };
 
 function drawAllCreeps(ctx){
@@ -43,42 +36,51 @@ function drawAllCreeps(ctx){
 
 function updateCreeps(){
 
-	if (gameLoopCounter % 105 == 1) {
-
-		creeps.push(new creep(200,200,180,10))
+	if (countCollection(creeps) < 11){
+		createCreep(400,400);	
 	};
+
+	console.log(countCollection(creeps));
+	
 
 	for (var i = 0; i < creeps.length; i++) {
     if (creeps[i] != undefined) {
 
-	    creeps[i].direction = creeps[i].direction + ((creeps[i].randomMedium - 5) * .3);
+	    creeps[i].direction = creeps[i].direction + ((creeps[i].randomMedium - 5) * .1);
 	    creeps[i].posX = creeps[i].posX + ((creeps[i].randomShort - 5) * .5);
-	    creeps[i].posY = creeps[i].posY + ((creeps[i].randomMedium - 5) * .5);
-	    
-	    // OVERTAKEN BY NEW TOWER CODE 
-	    // if (amIHit(creeps[i], creeps[i].posX, creeps[i].posY, creeps[i].size) == true) {
-	    // 	creeps[i].hitPoints = creeps[i].hitPoints - randomShort; 	
-	    // };
-	    
-	    if (creeps[i].hitPoints < 1) {
+	    creeps[i].posY = creeps[i].posY + ((creeps[i].randomMedium - 5) * .3);
 
+	    if (Math.abs(creeps[i].posX - 500) > 1000 || Math.abs(creeps[i].posY - 400)  > 800) {
+	    	creeps[i].hitPoints = 0;
+	    };	
+
+	    if (creeps[i].hitPoints < 1) {
 	    	if (creeps[i].deadCycle == undefined) { 
 	    		creeps[i].deadCycle = gameLoopCounter;
 	    	};
-
 	    	deathRattle(creeps[i].posX, creeps[i].posY, i);
-
-	    	if (creeps[i].deadCycle < (gameLoopCounter - 500)) {
+	    	if (creeps[i].deadCycle < (gameLoopCounter - 0)) {
 	    		creeps[i] = undefined; 
 	    	};
-
 	    };
+
 	  };  
 	};
-
 };
 
 
+function hitCreep(i){
+	creeps[towers[i].targetCreep].image.src = imgUnicorn;
+	creeps[towers[i].targetCreep].drawSize = 100;
+	creeps[towers[i].targetCreep].hitPoints = creeps[towers[i].targetCreep].hitPoints - 10;
+};
+
+function createCreep(x,y){
+	if (gameLoopCounter % 60 == 1){
+		console.log("create Creep!")
+		creeps.push(new creep(x,y,0,20));
+	}
+};
 
 function amIHit(creep,posX,posY,size){
 	return false; // temporary! 
@@ -88,7 +90,6 @@ function deathRattle(posX, posY, creepIndex){
 	// alert("deathRattle - a creep has died")
 	// console.log("deathRattle called")
 };
-
 
 function updateRandomFactors(collection){
 
@@ -120,24 +121,16 @@ function updateRandomFactors(collection){
 
 // DRIVER CODE FOR DEV
 
-var my_creep = new creep(200,200,180,10);
-var my_creep2 = new creep(100,500,180,10);
-var my_creep3 = new creep(200,100,180,10);
-creeps.push(my_creep)
-creeps.push(my_creep3)
-creeps.push(my_creep2)
+// var my_creep = new creep(220,220,0,10);
+// var my_creep2 = new creep(300,500,0,10);
+// var my_creep3 = new creep(400,300,0,10);
+// creeps.push(my_creep);
+// creeps.push(my_creep3);
+// creeps.push(my_creep2);
 
-var my_creep = new creep(200,200,180,10);
-var my_creep2 = new creep(100,500,180,10);
-var my_creep3 = new creep(200,100,180,10);
-creeps.push(my_creep)
-creeps.push(my_creep3)
-creeps.push(my_creep2)
-
-
-// var my_other_creep = new creep(150,150,180,10);
-// creeps.push(my_other_creep)
-
-// console.log(my_creep);
-// console.log(creeps);
-// console.log(creeps[0].direction)
+// var my_creep = new creep(200,200,0,10);
+// var my_creep2 = new creep(400,500,0,10);
+// var my_creep3 = new creep(200,500,0,10);
+// creeps.push(my_creep);
+// creeps.push(my_creep3);
+// creeps.push(my_creep2);
