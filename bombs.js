@@ -1,7 +1,7 @@
 //<!--  Contains functions to create, draw and modify bombs -->
 // 
 
-var bomb = [];  
+var bombs = [];  
 
 function bomb(posX,posY){
 	this.posX = posX;
@@ -118,7 +118,7 @@ function explode(i) {
 
 	var _distance = getDistance(i, bombs[i].targetCreep);
 	
-	if ( (_distance < bombs[i].BombRange) && (bombs[i].explodeCycle == undefined) ) {		
+	if ( (_distance < bombs[i].bombRange) && (bombs[i].explodeCycle == undefined) ) {		
 		bombs[i].image.src = imgBang;
 		bombs[i].explodeCycle = gameLoopCounter;
 		splatterSplash(bombs[i].posX, bombs[i].posY, seedColor, splashSize);

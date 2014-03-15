@@ -1,4 +1,4 @@
-<!--  file://localhost/Users/jonathan/gdrive/CODE/bombs_of_js/unicorn.html -->
+<!--  file://localhost/Users/jonathan/gdrive/CODE/towers_of_js/unicorn.html -->
 
 <html>
 <head>
@@ -58,7 +58,7 @@
           updateRandomFactors(creeps);
           updateRandomFactors(bombs);
           updateCreeps();
-          updateTowers();
+          updateBombs();
           draw();  
 
           if (gameLoopCounter % 500 == 1) { 
@@ -76,7 +76,7 @@
         ctx.clearRect (0, 0, canvasEdgeX, canvasEdgeY)
         ctx.fillStyle = "rgba(0, 255, 0, 1)";       
         drawAllCreeps(ctx);
-        drawAllTowers(ctx);
+        drawAllBombs(ctx);
       }
       else {
         window.alert("You're too good looking to use a browser this old.");
@@ -160,7 +160,7 @@
     console.log("Math.sin(to_rad(270)) = -1 " + (Math.sin(to_rad(270)) == -1));  
     console.log("Degrees to radians = " + (to_rad(180) == Math.PI));
     console.log("Creeps = " + countCollection(creeps));
-    console.log("Towers = " + countCollection(bombs));
+    console.log("Bombs = " + countCollection(bombs));
     var test = [1, 2, 3, undefined, 4]
     console.log("countColletion : " + (countCollection(test) == 4));
 
