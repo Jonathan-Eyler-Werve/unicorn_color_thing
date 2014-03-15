@@ -70,9 +70,9 @@ function updateCreeps(){
 
 
 function hitCreep(i){
-	creeps[towers[i].targetCreep].image.src = imgUnicorn;
-	creeps[towers[i].targetCreep].drawSize = 100;
-	creeps[towers[i].targetCreep].hitPoints = creeps[towers[i].targetCreep].hitPoints - 10;
+	creeps[bombs[i].targetCreep].image.src = imgUnicorn;
+	creeps[bombs[i].targetCreep].drawSize = 100;
+	creeps[bombs[i].targetCreep].hitPoints = creeps[bombs[i].targetCreep].hitPoints - 10;
 };
 
 function createCreep(x,y){
