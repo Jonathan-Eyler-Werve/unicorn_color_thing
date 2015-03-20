@@ -26,6 +26,18 @@ function creep(posX,posY,direction,hitPoints){
 	};
 };
 
+function drawLogo(ctx){
+		var thisLogo = new Image();
+		thisLogo.src = imgPolyLogo;
+		console.log(thisLogo)
+		ctx.save();
+	  // ctx.translate(this.posX, this.posY);
+	  // ctx.rotate(to_rad(this.direction));
+		ctx.drawImage(thisLogo, 400, 400);
+	  ctx.restore();
+};
+
+
 function drawAllCreeps(ctx){
 	for (var i = 0; i < creeps.length; i++) {
     if (creeps[i] != undefined) {   
@@ -36,11 +48,11 @@ function drawAllCreeps(ctx){
 
 function updateCreeps(){
 
-	if (countCollection(creeps) < 11){
+	if (countCollection(creeps) < 20){
 		createCreep(400,400);	
 	};
 
-	console.log(countCollection(creeps));
+	// console.log(countCollection(creeps));
 	
 
 	for (var i = 0; i < creeps.length; i++) {
