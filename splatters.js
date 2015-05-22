@@ -26,11 +26,11 @@ function splatterSplash(x, y, color, size) {
 
 function splatterCircle(x, y, color, size) {
 	// console.log("splatterCircle called");
-	overlayCtx.beginPath();
-  overlayCtx.arc(x, y, size, 0, 2 * Math.PI, false);
-  overlayCtx.fillStyle = color;
-  overlayCtx.globalAlpha = 0.2;
-  overlayCtx.fill();
+	g.overlayCtx.beginPath();
+  g.overlayCtx.arc(x, y, size, 0, 2 * Math.PI, false);
+  g.overlayCtx.fillStyle = color;
+  g.overlayCtx.globalAlpha = 0.2;
+  g.overlayCtx.fill();
 };
 
 function randomSaturate(color) {
