@@ -13,21 +13,25 @@
 
   <script type="application/javascript">
 
-    var dead = false;
-    var gameLoopCounter = 0;
-    var frameRate = 50; // frames per second
-    var cycleTime = (1500 / frameRate);
-    var canvasEdgeX = $(window).width(); // sync this with HTML below
-    var canvasEdgeY = $(window).height(); // sync this with HTML below
-    var killCycle = 10000000; // for debugging, game loop shuts off after number of cycles
-    var seedColor = '#99ff33';
+    window.game = window.game || {};
+    var g = window.game;
+    console.log(window.game);
+
+    g.dead = false;
+    g.gameLoopCounter = 0;
+    g.frameRate = 30; // frames per second
+    g.cycleTime = (1000 / g.frameRate);
+    g.canvasEdgeX = $(window).width(); // sync this with HTML below
+    g.canvasEdgeY = $(window).height(); // sync this with HTML below
+    g.killCycle = 10000000; // for debugging, game loop shuts off after number of cycles
+    g.seedColor = '#99ff33';
 
     $( document ).ready(function() {
-      canvas = document.getElementById("canvas");
-      overlay = document.getElementById("overlay");
+      g.canvas = document.getElementById("canvas");
+      g.overlay = document.getElementById("overlay");
       setSizes();
-      ctx = canvas.getContext("2d");
-      overlayCtx = overlay.getContext("2d");
+      g.ctx = canvas.getContext("2d");
+      g.overlayCtx = overlay.getContext("2d");
       // wizard();
       loop();
     });
@@ -37,49 +41,49 @@
     });
 
     function setSizes(){
-      canvasEdgeX = $(window).width(); 
-      canvasEdgeY = $(window).height(); 
-      canvas.width = canvasEdgeX;
-      canvas.height = canvasEdgeY;
-      overlay.width = canvasEdgeX;
-      overlay.height = canvasEdgeY;
+      g.canvasEdgeX = $(window).width(); 
+      g.canvasEdgeY = $(window).height(); 
+      g.canvas.width = g.canvasEdgeX;
+      g.canvas.height = g.canvasEdgeY;
+      g.overlay.width = g.canvasEdgeX;
+      g.overlay.height = g.canvasEdgeY;
     };
 
     function loop(){  
       setInterval(function(){
-        // if (gameLoopCounter > killCycle){
+        // if (g.gameLoopCounter > killCycle){
         //   dead = true;
         // };
 
 
-        if (dead == false) {
-          gameLoopCounter += 1; 
+        if (g.dead === false) {
+          g.gameLoopCounter += 1; 
 
-          updateRandomFactors(creeps);
-          updateRandomFactors(towers);
+          updateRandomFactors(g.creeps);
+          updateRandomFactors(g.towers);
           updateCreeps();
           updateTowers();
           draw();  
 
-          if (gameLoopCounter % 1000 == 1) { 
+          if (g.gameLoopCounter % 1000 == 1) { 
             mutateSeedColor();
             console.log("mutating colors!")
           };
 
         };
-      },cycleTime);
+      },g.cycleTime);
     };
 
     function draw(){
     
       if (canvas.getContext) {
-        ctx.clearRect (0, 0, canvasEdgeX, canvasEdgeY)
-        ctx.fillStyle = "rgba(0, 255, 0, 1)";       
-        drawAllCreeps(ctx);
-        drawAllTowers(ctx);
+        g.ctx.clearRect (0, 0, g.canvasEdgeX, g.canvasEdgeY)
+        g.ctx.fillStyle = "rgba(0, 255, 0, 1)";       
+        drawAllCreeps(g.ctx);
+        drawAllTowers(g.ctx);
 
-        if (gameLoopCounter % 200 == 1) { 
-          drawLogo(overlayCtx);
+        if (g.gameLoopCounter % 200 == 1) { 
+          drawLogo(g.overlayCtx);
           console.log("drawLogo runs")
         };
 
@@ -99,7 +103,7 @@
 
     function updateRandomFactors(collection){
 
-        if (gameLoopCounter%30 == 1){ // SHORT random factor generator
+        if (g.gameLoopCounter%30 == 1){ // SHORT random factor generator
         // console.log("%30")
         for (var i = 0; i < collection.length; i++) {
           if (collection[i] != undefined) {
@@ -109,7 +113,7 @@
         };
       };
 
-      if (gameLoopCounter%100 == 1){  // MEDIUM random factor generator
+      if (g.gameLoopCounter%100 == 1){  // MEDIUM random factor generator
         // console.log("%100")
         for (var i = 0; i < collection.length; i++) {
           if (collection[i] != undefined) {
@@ -119,7 +123,7 @@
         };
       };
 
-      if (gameLoopCounter%1000 == 1){ // LONG random factor generator
+      if (g.gameLoopCounter%1000 == 1){ // LONG random factor generator
         // console.log("%1000")
         for (var i = 0; i < collection.length; i++) {
           if (collection[i] != undefined) {
@@ -143,17 +147,17 @@
 
 
 
-    function to_i(_value)  {
+    function toInteger(value)  {
       // uses Bitwise operator to convert value to int. Allegedly faster than Math methods.
-      return _value | 0
+      return value | 0
     };
 
-    function to_rad(_degrees){
-      return _degrees * (Math.PI / 180)
+    function toRadians(degrees){
+      return degrees * (Math.PI / 180)
     };
 
-    function to_degrees(_rad){
-      return _rad / (Math.PI / 180)
+    function toDegrees(rad){
+      return rad / (Math.PI / 180)
     };
 
   </script>
@@ -165,8 +169,8 @@
     console.log("Math.sin(to_rad(90)) = 1 " + (Math.sin(to_rad(90)) == 1));
     console.log("Math.sin(to_rad(270)) = -1 " + (Math.sin(to_rad(270)) == -1));  
     console.log("Degrees to radians = " + (to_rad(180) == Math.PI));
-    console.log("Creeps = " + countCollection(creeps));
-    console.log("Towers = " + countCollection(towers));
+    console.log("Creeps = " + countCollection(g.creeps));
+    console.log("Towers = " + countCollection(g.towers));
     var test = [1, 2, 3, undefined, 4]
     console.log("countColletion : " + (countCollection(test) == 4));
 
