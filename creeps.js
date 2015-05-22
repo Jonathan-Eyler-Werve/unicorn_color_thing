@@ -24,6 +24,7 @@ function creep(posX,posY,direction,hitPoints){
 		ctx.save();
 	  ctx.translate(this.posX, this.posY);
 	  ctx.rotate(to_rad(this.direction));
+	  ctx.globalAlpha = 0.3;
 		ctx.drawImage(this.image,(this.drawSize/-2),(this.drawSize/-2), this.drawSize, this.drawSize);
 	  ctx.restore();
 	};

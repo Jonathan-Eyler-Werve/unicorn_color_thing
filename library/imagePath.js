@@ -18,4 +18,4 @@ var imgBullet = 'images/icon_30254.svg'; // Bullet designed by Broquil broquil f
 var imgUnicorn = 'images/icon_29749.svg'; // Unicorn designed by caba kosmotesto from the Noun Project
 var imgGandalf = 'images/icon_36395.svg'; // Galdalf, public domain, via Noun Project 
 var imgLogo = 'images/TLR.svg'; // 
-var imgPolyLogo = 'images/polymathic.png'; // 
+var imgPolyLogo = 'images/polymathic-trans.png'; // 
