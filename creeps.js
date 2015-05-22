@@ -36,7 +36,7 @@ function drawLogo(ctx){
 		ctx.save();
 	  // ctx.translate(this.posX, this.posY);
 	  // ctx.rotate(to_rad(this.direction));
-		ctx.drawImage(thisLogo, 400, 400);
+		ctx.drawImage(thisLogo, g.canvasEdgeX/2-500, g.canvasEdgeY/2-50);
 	  ctx.restore();
 };
 
@@ -51,8 +51,8 @@ function drawAllCreeps(ctx){
 
 function updateCreeps(){
 
-	if (countCollection(creeps) < 20){
-		createCreep(400,400);	
+	if (countCollection(g.creeps) < 20){
+		createCreep(g.canvasEdgeX/2,g.canvasEdgeY/2);	
 	};
 
 	// console.log(countCollection(creeps));
