@@ -43,7 +43,7 @@ function drawLogo(ctx){
 
 function drawAllCreeps(ctx){
 	for (var i = 0; i < g.creeps.length; i++) {
-    if (g.creeps[i] != undefined) {   
+    if (g.creeps[i] != undefined) {
       g.creeps[i].drawCreep(ctx);
     };
   };
@@ -52,11 +52,11 @@ function drawAllCreeps(ctx){
 function updateCreeps(){
 
 	if (countCollection(g.creeps) < 20){
-		createCreep(g.canvasEdgeX/2,g.canvasEdgeY/2);	
+		createCreep(g.canvasEdgeX/2,g.canvasEdgeY/2);
 	};
 
 	// console.log(countCollection(creeps));
-	
+
 
 	for (var i = 0; i < g.creeps.length; i++) {
     if (g.creeps[i] != undefined) {
@@ -67,19 +67,19 @@ function updateCreeps(){
 
 	    if (Math.abs(g.creeps[i].posX - 500) > 1000 || Math.abs(g.creeps[i].posY - 400)  > 800) {
 	    	g.creeps[i].hitPoints = 0;
-	    };	
+	    };
 
 	    if (g.creeps[i].hitPoints < 1) {
-	    	if (g.creeps[i].deadCycle == undefined) { 
+	    	if (g.creeps[i].deadCycle == undefined) {
 	    		g.creeps[i].deadCycle = g.gameLoopCounter;
 	    	};
 	    	deathRattle(g.creeps[i].posX, g.creeps[i].posY, i);
 	    	if (g.creeps[i].deadCycle < (g.gameLoopCounter - 0)) {
-	    		g.creeps[i] = undefined; 
+	    		g.creeps[i] = undefined;
 	    	};
 	    };
 
-	  };  
+	  };
 	};
 };
 
@@ -98,7 +98,7 @@ function createCreep(x,y){
 };
 
 function amIHit(creep,posX,posY,size){
-	return false; // temporary! 
+	return false; // temporary!
 };
 
 function deathRattle(posX, posY, creepIndex){
