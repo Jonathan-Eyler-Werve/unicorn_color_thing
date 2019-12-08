@@ -85,8 +85,8 @@ function updateCreeps(){
 
 
 function hitCreep(i){
-	g.creeps[g.towers[i].targetCreep].image.src = imgUnicorn;
-	g.creeps[g.towers[i].targetCreep].drawSize = 100;
+	g.creeps[g.towers[i].targetCreep].image.src = imgRudolf;
+	g.creeps[g.towers[i].targetCreep].drawSize = 75;
 	g.creeps[g.towers[i].targetCreep].hitPoints = g.creeps[g.towers[i].targetCreep].hitPoints - 10;
 };
 
