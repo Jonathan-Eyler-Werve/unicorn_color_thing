@@ -12,7 +12,7 @@ function creep(posX,posY,direction,hitPoints){
 	this.hitPoints = hitPoints;
 	this.size = 10;
 	this.image = new Image();
-	this.image.src = imgIndifferentSmily;
+	this.image.src = imgSantaHat;
 	this.randomShort = 5;
 	this.randomMedium = 5;
 	this.randomLong = 5;
