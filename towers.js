@@ -3,7 +3,7 @@
 window.game = window.game || {};
 
 var g = window.game;
-g.towers = [];  
+g.towers = [];
 
 function tower(posX,posY){
 	this.posX = posX;
@@ -15,7 +15,7 @@ function tower(posX,posY){
 	this.thrustX = 0;
 	this.thrustY = 0;
 	this.inertiaX = 10;
-	this.inertiaY = -10;	
+	this.inertiaY = -10;
 	this.size = 10;
 	this.image = new Image();
 	this.image.src = imgRoundArrow;
@@ -39,22 +39,22 @@ function tower(posX,posY){
 	  	ctx.drawImage(this.image,-5,-5, 10, 10);
 	  }
 	  else {
-    	ctx.drawImage(this.image,-50,-50); // SVG 
+    	ctx.drawImage(this.image,-50,-50); // SVG
 	  };
 
 	  ctx.restore();
 	};
 };
 
-function wizard() {
-		g.overlayCtx.save();
-	  g.overlayCtx.translate(700, 700);
-		g.overlayCtx.beginPath();
-	  g.overlayCtx.arc(0, 0, 20, 0, 2 * Math.PI, false);
-	  g.overlayCtx.fillStyle = '#999999';
-	  g.overlayCtx.fill();
-	  g.overlayCtx.restore();
-	}; 
+// function wizard() {
+// 		g.overlayCtx.save();
+// 	  g.overlayCtx.translate(700, 700);
+// 		g.overlayCtx.beginPath();
+// 	  g.overlayCtx.arc(0, 0, 20, 0, 2 * Math.PI, false);
+// 	  g.overlayCtx.fillStyle = '#999999';
+// 	  g.overlayCtx.fill();
+// 	  g.overlayCtx.restore();
+// 	};
 
 function smokeTrail(i) {
 		g.overlayCtx.save();
@@ -62,10 +62,10 @@ function smokeTrail(i) {
 		g.overlayCtx.beginPath();
 	  g.overlayCtx.arc(0, 0, 3, 0, 2 * Math.PI, false);
 	  g.overlayCtx.globalAlpha = 0.3;
-	  g.overlayCtx.fillStyle = 'yellow';
+	  g.overlayCtx.fillStyle = 'green';
 	  g.overlayCtx.fill();
 	  g.overlayCtx.restore();
-	}; 	
+	};
 
 function drawDot(ctx){ // Draws a square dot on canvas
 	ctx.beginPath();
@@ -85,7 +85,7 @@ function drawAllTowers(ctx){
 
 function updateTowers(){
 
-	if (countCollection(g.towers) < 20){ 
+	if (countCollection(g.towers) < 20){
 		createTower(0,0);
 		createTower(700,700);
 	};
@@ -106,12 +106,12 @@ function createTower(x,y){
 	if (g.gameLoopCounter % 70 == 1){
 		console.log("create Tower!")
 		g.towers.push(new tower(x,y));
-	} 	
+	}
 };
 
 function explode(i) {
 
-	var splashSize = (Math.abs(g.towers[i].inertiaX) + Math.abs(g.towers[i].inertiaY)) * .3 + 5 
+	var splashSize = (Math.abs(g.towers[i].inertiaX) + Math.abs(g.towers[i].inertiaY)) * .3 + 5
 	//var splashSize = (Math.random() * 20 + 10)
 
 	if (g.creeps[g.towers[i].targetCreep] == undefined) {
@@ -119,15 +119,15 @@ function explode(i) {
 	};
 
 	var _distance = getDistance(i, g.towers[i].targetCreep);
-	
-	if ( (_distance < g.towers[i].towerRange) && (g.towers[i].explodeCycle == undefined) ) {		
+
+	if ( (_distance < g.towers[i].towerRange) && (g.towers[i].explodeCycle == undefined) ) {
 		g.towers[i].image.src = imgBang;
 		g.towers[i].explodeCycle = g.gameLoopCounter;
 		splatterSplash(g.towers[i].posX, g.towers[i].posY, seedColor, splashSize);
 		hitCreep(i);
 	};
 
-	if ( g.towers[i].explodeCycle < g.gameLoopCounter - 10)  {		
+	if ( g.towers[i].explodeCycle < g.gameLoopCounter - 10)  {
 		g.towers[i] = undefined;
 	};
 };
@@ -135,7 +135,7 @@ function explode(i) {
 function updateThrustX(i) {
 	// console.log("direction " + g.towers[i].direction)
   return (g.towers[i].thrustPolar * Math.sin(g.towers[i].direction));
-}; 
+};
 
 function updateThrustY(i) {
 	// console.log(g.towers[i].direction)
@@ -150,40 +150,40 @@ function chaseTargets(i){
 	// console.log("tower " + i + ", inertiaX = " + g.towers[i].inertiaX);
 	g.towers[i].posX += g.towers[i].inertiaX;
 	g.towers[i].posY += g.towers[i].inertiaY;
-}; 
+};
 
-function findClosestTarget(towerIndex) { // finds nearest creep 
+function findClosestTarget(towerIndex) { // finds nearest creep
 	var creepDistance = undefined;
 	for (var i = 0; i < g.creeps.length; i++) {
 		if (g.creeps[i] != undefined) {
 			var _distance =	getDistance(towerIndex, i)
 			if (creepDistance > _distance || creepDistance == undefined) {
 				index = i;
-				creepDistance = _distance; 
+				creepDistance = _distance;
 			};
 		};
 	};
-	return index 	
+	return index
 };
 
 function getDistance(towerIndex, creepIndex){ // FIND DISTANCE FROM TOWER TO CREEP
-	
+
 	if (g.towers[towerIndex] == undefined) {
 		console.log("getDistance aborted early due to undefined tower Object")
 		console.log("towerIndex = " + towerIndex)
-		return 
+		return
 	};
 
 	if (g.creeps[creepIndex] == undefined) {
 		console.log("getDistance aborted early due to undefined creep Object")
 		console.log("creepIndex = " + creepIndex)
-		return 
+		return
 	};
 
-	var distanceX = g.creeps[creepIndex].posX - g.towers[towerIndex].posX 
-	var distanceY = g.creeps[creepIndex].posY - g.towers[towerIndex].posY 
+	var distanceX = g.creeps[creepIndex].posX - g.towers[towerIndex].posX
+	var distanceY = g.creeps[creepIndex].posY - g.towers[towerIndex].posY
 	var distance = Math.sqrt((distanceX * distanceX) + (distanceY * distanceY))
-	return distance 
+	return distance
 };
 
 function aimTower(i) {
@@ -193,7 +193,7 @@ function aimTower(i) {
 		var _distanceY = ((g.creeps[_target].posY) - g.towers[i].posY ) * -1;
 	 	var _direction = Math.atan2(_distanceX, _distanceY)
 	 	return _direction
-  }; 
+  };
 };
 
 function pointTowerImage(i) {
