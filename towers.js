@@ -67,13 +67,13 @@ function smokeTrail(i) {
 	  g.overlayCtx.restore();
 	};
 
-function drawDot(ctx){ // Draws a square dot on canvas
-	ctx.beginPath();
-  ctx.lineWidth = 5
-  ctx.moveTo(0,0);
-  ctx.lineTo(0, 5);
-  ctx.stroke();
-};
+// function drawDot(ctx){ // Draws a square dot on canvas
+// 	ctx.beginPath();
+//   ctx.lineWidth = 5
+//   ctx.moveTo(0,0);
+//   ctx.lineTo(0, 5);
+//   ctx.stroke();
+// };
 
 function drawAllTowers(ctx){
 	for (var i = 0; i < g.towers.length; i++) {
@@ -85,9 +85,10 @@ function drawAllTowers(ctx){
 
 function updateTowers(){
 
-	if (countCollection(g.towers) < 20){
-		createTower(0,0);
-		createTower(700,700);
+	if (countCollection(g.towers) < 90){
+		var localX = to_i((Math.random() * window.innerWidth));
+		var localY = to_i((Math.random() * window.innerHeight));
+		createTower(localX,localY);
 	};
 
 	for (var i = 0; i < g.towers.length; i++) {
@@ -103,8 +104,8 @@ function updateTowers(){
 };
 
 function createTower(x,y){
-	if (g.gameLoopCounter % 70 == 1){
-		console.log("create Tower!")
+	if (g.gameLoopCounter % 100 == 1){
+		// console.log("create Tower!")
 		g.towers.push(new tower(x,y));
 	}
 };
@@ -112,7 +113,6 @@ function createTower(x,y){
 function explode(i) {
 
 	var splashSize = (Math.abs(g.towers[i].inertiaX) + Math.abs(g.towers[i].inertiaY)) * .3 + 5
-	//var splashSize = (Math.random() * 20 + 10)
 
 	if (g.creeps[g.towers[i].targetCreep] == undefined) {
 		return
